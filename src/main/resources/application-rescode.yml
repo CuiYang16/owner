@@ -1,0 +1,52 @@
+user:
+  default_pwd: admin_123
+code:
+  user:
+    login_success: 21001
+    login_fail: 51001
+    register_success: 21002
+    register_fail: 51002
+    validity_username_success: 21003
+    validity_username_fail: 51003
+    select_user_all: 21004
+    select_user_all_fail: 51004
+    update_user: 21005
+    update_user_fail: 51005
+    insert_user: 21006
+    insert_user_fail: 51006
+  role:
+    select_tree_roles: 22001
+    select_tree_roles_fail: 52001
+    select_table_roles: 22002
+    select_table_roles_fail: 52002
+    insert_role: 22003
+    insert_role_fail: 52003
+    update_role: 22004
+    updata_role_fail: 52004
+    del_role: 22005
+    del_role_fail: 52006
+msg:
+  user:
+    login_success: 登录成功
+    login_fail: 登录失败
+    register_success: 注册成功
+    register_fail: 注册失败
+    validity_username_success: 用户名可用！
+    validity_username_fail: 用户名已存在！
+    select_user_all: 查询所有用户成功！
+    select_user_all_fail: 查询所有用户失败！
+    update_user: 编辑用户信息成功！
+    update_user_fail: 编辑用户信息失败，请刷新重试！
+    insert_user: 添加用户成功！
+    insert_user_fail: 添加用户失败，请刷新重试！
+  role:
+    select_tree_roles: 树形查询成功!
+    select_tree_roles_fail: 树形查询失败，请刷新重试！
+    select_table_roles: 表格查询成功!
+    select_table_roles_fail: 表格查询失败，请刷新重试！
+    insert_role: 新增角色成功!
+    insert_role_fail: 新增角色失败，请刷新重试！
+    update_role: 编辑角色信息成功！
+    updata_role_fail: 编辑角色信息失败，请刷新重试！
+    del_role: 删除成功！
+    del_role_fail: 删除失败，请刷新重试！
