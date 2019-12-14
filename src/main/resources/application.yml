@@ -1,22 +1,20 @@
 server:
   port: 8080
-  display-name: OWNER
-  context-path: /
-  jsp-servlet:
-    init-parameters:
-      development: true
-  session:
-    timeout: 1800
+  servlet:
+    context-path: /
+    application-display-name: OWNER
+    session:
+      timeout: 1800
 
 info:
   version: "1.0.0"
 mybatis:
-  mapperLocations: classpath:mapper/**/*Mapper.xml
+  mapperLocations: classpath:mapperXml/**/*Mapper.xml
 
 
 spring:
-#  mvc:
-#    static-path-pattern: /static/**
+  #  mvc:
+  #    static-path-pattern: /static/**
   profiles:
     include: druid, redis, rescode
   servlet:

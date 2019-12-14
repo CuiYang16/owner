@@ -179,7 +179,7 @@
 	<!-- 4. 最终的策略 -->
 	<!-- 4.1 开发环境:打印控制台-->
 	<springProfile name="dev">
-		<logger name="com.cy.owner.dao" level="debug"/><!-- 修改此处扫描包名 -->
+		<logger name="com.cy.owner.mapper" level="debug"/><!-- 修改此处扫描包名 -->
 	</springProfile>
 
 	<root level="info">
