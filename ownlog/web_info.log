@@ -1,0 +1,200 @@
+2019-12-29 21:03:09.646 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 19688 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:03:09.647 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:03:09.711 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:03:09.711 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:03:10.623 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:03:10.626 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:03:10.653 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+2019-12-29 21:03:10.996 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d3bda6ac] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:03:11.448 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:03:11.464 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:03:11.471 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:03:11.471 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:03:11.642 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:03:11.643 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1931 ms
+2019-12-29 21:03:11.933 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2019-12-29 21:04:06.164 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 18520 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:04:06.164 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:04:06.236 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:04:06.236 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:04:07.029 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:04:07.031 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:04:07.069 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 21ms. Found 0 Redis repository interfaces.
+2019-12-29 21:04:07.433 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9c91fded] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:04:07.876 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:04:07.889 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:04:07.896 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:04:07.896 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:04:08.052 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:04:08.052 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1816 ms
+2019-12-29 21:04:08.330 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2019-12-29 21:06:36.445 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 20656 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:06:36.446 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:06:36.572 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:06:36.572 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:06:37.778 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:06:37.780 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:06:37.805 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+2019-12-29 21:06:38.148 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bcac9f31] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:06:38.540 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:06:38.553 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:06:38.560 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:06:38.560 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:06:38.705 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:06:38.706 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2134 ms
+2019-12-29 21:06:39.112 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2019-12-29 21:07:16.351 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 15284 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:07:16.351 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:07:16.433 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:07:16.433 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:07:17.166 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:07:17.169 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:07:17.191 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2019-12-29 21:07:17.499 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ee03dfaa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:07:17.832 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:07:17.843 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:07:17.851 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:07:17.851 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:07:18.013 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:07:18.014 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1581 ms
+2019-12-29 21:07:18.272 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2019-12-29 21:08:32.910 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 21212 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:08:32.910 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:08:32.977 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:08:32.977 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:08:33.671 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:08:33.673 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:08:33.694 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2019-12-29 21:08:34.011 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6c964de2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:08:34.334 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:08:34.344 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:08:34.350 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:08:34.350 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:08:34.498 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:08:34.498 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1521 ms
+2019-12-29 21:08:34.726 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2019-12-29 21:13:04.795 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 13908 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:13:04.797 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:13:04.869 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:13:04.869 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:13:05.571 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:13:05.574 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:13:05.596 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+2019-12-29 21:13:05.903 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b369461d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:13:06.208 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:13:06.220 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:13:06.227 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:13:06.227 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:13:06.383 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:13:06.383 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1514 ms
+2019-12-29 21:13:06.617 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2019-12-29 21:13:06.640 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-12-29 21:14:14.629 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 12752 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:14:14.631 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:14:14.699 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:14:14.699 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:14:15.393 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:14:15.395 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:14:15.416 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
+2019-12-29 21:14:15.728 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$158dcd25] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:14:16.023 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:14:16.033 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:14:16.039 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:14:16.039 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:14:16.175 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:14:16.175 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1476 ms
+2019-12-29 21:14:16.402 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2019-12-29 21:14:16.427 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-12-29 21:14:53.968 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 21144 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:14:53.970 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:14:54.044 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:14:54.044 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:14:54.786 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:14:54.789 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:14:54.813 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+2019-12-29 21:14:55.124 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4c986727] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:14:55.417 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:14:55.427 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:14:55.433 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:14:55.434 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:14:55.582 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:14:55.582 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1537 ms
+2019-12-29 21:14:56.856 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-12-29 21:14:56.863 [restartedMain] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-29 21:14:56.915 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:14:56.934 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-29 21:14:56.936 [restartedMain] INFO  OwnerApplication - Started OwnerApplication in 3.528 seconds (JVM running for 5.399)
+2019-12-29 21:14:58.660 [RMI TCP Connection(3)-192.168.186.1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-29 21:14:58.660 [RMI TCP Connection(3)-192.168.186.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-12-29 21:14:58.665 [RMI TCP Connection(3)-192.168.186.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2019-12-29 21:15:03.322 [RMI TCP Connection(1)-192.168.186.1] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-12-29 21:15:04.177 [parallel-1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2019-12-29 21:15:04.178 [parallel-1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2019-12-29 21:17:43.266 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 12652 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:17:43.268 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:17:43.336 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:17:43.336 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:17:44.127 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:17:44.129 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:17:44.160 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+2019-12-29 21:17:44.472 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ac0ddc8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:17:44.832 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:17:44.843 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:17:44.848 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:17:44.849 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:17:45.042 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:17:45.043 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1706 ms
+2019-12-29 21:17:46.055 [restartedMain] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1eb91642-1b0f-4a26-ad83-c2d9b7892137
+
+2019-12-29 21:17:46.161 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7a668eab, org.springframework.security.web.context.SecurityContextPersistenceFilter@32af2881, org.springframework.security.web.header.HeaderWriterFilter@615e5726, org.springframework.security.web.csrf.CsrfFilter@6f4a6c21, org.springframework.security.web.authentication.logout.LogoutFilter@61775517, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3cafd8aa, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1cb08115, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@3f6dd4a0, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6953186c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@56a4e003, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d1bf954, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4fb259c, org.springframework.security.web.session.SessionManagementFilter@16650c2b, org.springframework.security.web.access.ExceptionTranslationFilter@1c27e184, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1f647bd4]
+2019-12-29 21:17:46.319 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-12-29 21:17:46.324 [restartedMain] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-29 21:17:46.368 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:17:46.387 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-29 21:17:46.389 [restartedMain] INFO  OwnerApplication - Started OwnerApplication in 3.623 seconds (JVM running for 5.452)
+2019-12-29 21:17:48.378 [RMI TCP Connection(4)-192.168.186.1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-29 21:17:48.378 [RMI TCP Connection(4)-192.168.186.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-12-29 21:17:48.383 [RMI TCP Connection(4)-192.168.186.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2019-12-29 21:17:48.746 [RMI TCP Connection(1)-192.168.186.1] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-12-29 21:17:48.850 [parallel-1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2019-12-29 21:17:48.852 [parallel-1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2019-12-29 21:20:12.508 [restartedMain] INFO  OwnerApplication - Starting OwnerApplication on cuiyang with PID 18368 (E:\IdeaWorkSpace\MyWorkSpace\owner\target\classes started by cuiyang in E:\IdeaWorkSpace\MyWorkSpace\owner)
+2019-12-29 21:20:12.510 [restartedMain] INFO  OwnerApplication - The following profiles are active: druid,redis,rescode
+2019-12-29 21:20:12.580 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-29 21:20:12.581 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-29 21:20:13.379 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-29 21:20:13.381 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2019-12-29 21:20:13.409 [restartedMain] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2019-12-29 21:20:13.721 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3178b7e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-29 21:20:14.104 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-12-29 21:20:14.114 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:20:14.120 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-29 21:20:14.120 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.29]
+2019-12-29 21:20:14.329 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-29 21:20:14.330 [restartedMain] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1749 ms
+2019-12-29 21:20:15.401 [restartedMain] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 20aa4164-a3f9-4b3d-9637-9d8d5b92e17b
+
+2019-12-29 21:20:15.495 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@460e164e, org.springframework.security.web.context.SecurityContextPersistenceFilter@63592fc3, org.springframework.security.web.header.HeaderWriterFilter@6d87f930, org.springframework.security.web.csrf.CsrfFilter@552a1a50, org.springframework.security.web.authentication.logout.LogoutFilter@69e48d4d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7101fe5c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3f6dd4a0, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@131884ba, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@36f2273a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2586f236, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d6c424a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@72fcea, org.springframework.security.web.session.SessionManagementFilter@d437e15, org.springframework.security.web.access.ExceptionTranslationFilter@69b91e97, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d95acb4]
+2019-12-29 21:20:15.669 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2019-12-29 21:20:15.678 [restartedMain] INFO  o.s.b.actuate.endpoint.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-29 21:20:15.734 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-12-29 21:20:15.758 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-29 21:20:15.760 [restartedMain] INFO  OwnerApplication - Started OwnerApplication in 3.783 seconds (JVM running for 5.606)
+2019-12-29 21:20:16.187 [RMI TCP Connection(1)-192.168.186.1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-29 21:20:16.187 [RMI TCP Connection(1)-192.168.186.1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-12-29 21:20:16.193 [RMI TCP Connection(1)-192.168.186.1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2019-12-29 21:20:23.469 [RMI TCP Connection(3)-192.168.186.1] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2019-12-29 21:20:24.188 [parallel-1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2019-12-29 21:20:24.188 [parallel-1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2019-12-29 21:21:29.496 [http-nio-8080-exec-6] INFO  CrosXssFilter - CrosXssFilter.......orignal url:/,ParameterMap:{}
+2019-12-29 21:21:29.502 [http-nio-8080-exec-6] INFO  CrosXssFilter - CrosXssFilter..........doFilter url:/,ParameterMap:{}
+2019-12-29 21:21:29.644 [http-nio-8080-exec-10] INFO  CrosXssFilter - CrosXssFilter.......orignal url:/favicon.ico,ParameterMap:{}
+2019-12-29 21:21:29.645 [http-nio-8080-exec-10] INFO  CrosXssFilter - CrosXssFilter..........doFilter url:/favicon.ico,ParameterMap:{}

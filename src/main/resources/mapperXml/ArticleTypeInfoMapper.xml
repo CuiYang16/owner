@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.cy.owner.mapper.ArticleTypeInfoMapper">
+  <resultMap id="BaseResultMap" type="priv.cy.owner.entity.ArticleTypeInfo">
+    <!--@mbg.generated-->
+    <!--@Table article_type_info-->
+    <result column="article_type_id" jdbcType="VARCHAR" property="articleTypeId" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="type_code" jdbcType="VARCHAR" property="typeCode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_by_user" jdbcType="VARCHAR" property="createByUser" />
+    <result column="update_by_user" jdbcType="VARCHAR" property="updateByUser" />
+  </resultMap>
+  <insert id="insert" parameterType="priv.cy.owner.entity.ArticleTypeInfo">
+    <!--@mbg.generated-->
+    insert into article_type_info (article_type_id, type_name, type_code, 
+      create_time, update_time, create_by_user, 
+      update_by_user)
+    values (#{articleTypeId,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, #{typeCode,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createByUser,jdbcType=VARCHAR}, 
+      #{updateByUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="priv.cy.owner.entity.ArticleTypeInfo">
+    <!--@mbg.generated-->
+    insert into article_type_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleTypeId != null">
+        article_type_id,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="typeCode != null">
+        type_code,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createByUser != null">
+        create_by_user,
+      </if>
+      <if test="updateByUser != null">
+        update_by_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleTypeId != null">
+        #{articleTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null">
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createByUser != null">
+        #{createByUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateByUser != null">
+        #{updateByUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into article_type_info
+    (article_type_id, type_name, type_code, create_time, update_time, create_by_user, 
+      update_by_user)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.articleTypeId,jdbcType=VARCHAR}, #{item.typeName,jdbcType=VARCHAR}, #{item.typeCode,jdbcType=VARCHAR}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.createByUser,jdbcType=VARCHAR}, 
+        #{item.updateByUser,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

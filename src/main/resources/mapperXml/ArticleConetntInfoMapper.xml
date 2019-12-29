@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.cy.owner.mapper.ArticleConetntInfoMapper">
+  <resultMap id="BaseResultMap" type="priv.cy.owner.entity.ArticleConetntInfo">
+    <!--@mbg.generated-->
+    <!--@Table article_conetnt_info-->
+    <result column="article_conetnt_id" jdbcType="VARCHAR" property="articleConetntId" />
+  </resultMap>
+  <insert id="insert" parameterType="priv.cy.owner.entity.ArticleConetntInfo">
+    <!--@mbg.generated-->
+    insert into article_conetnt_info (article_conetnt_id)
+    values (#{articleConetntId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="priv.cy.owner.entity.ArticleConetntInfo">
+    <!--@mbg.generated-->
+    insert into article_conetnt_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleConetntId != null">
+        article_conetnt_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleConetntId != null">
+        #{articleConetntId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into article_conetnt_info
+    (article_conetnt_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.articleConetntId,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

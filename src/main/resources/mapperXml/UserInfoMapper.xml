@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.cy.owner.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="priv.cy.owner.entity.UserInfo">
+    <!--@mbg.generated-->
+    <!--@Table user_info-->
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="user_sex" jdbcType="BOOLEAN" property="userSex" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+    <result column="user_birthday" jdbcType="DATE" property="userBirthday" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="is_deleted" jdbcType="BOOLEAN" property="isDeleted" />
+    <result column="is_locked" jdbcType="BOOLEAN" property="isLocked" />
+    <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar" />
+    <result column="pwd_salt" jdbcType="VARCHAR" property="pwdSalt" />
+  </resultMap>
+  <insert id="insert" parameterType="priv.cy.owner.entity.UserInfo">
+    <!--@mbg.generated-->
+    insert into user_info (user_id, user_name, user_pwd, 
+      user_sex, user_phone, user_email, 
+      user_birthday, create_time, is_deleted, 
+      is_locked, user_avatar, pwd_salt
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+      #{userSex,jdbcType=BOOLEAN}, #{userPhone,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, 
+      #{userBirthday,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BOOLEAN}, 
+      #{isLocked,jdbcType=BOOLEAN}, #{userAvatar,jdbcType=VARCHAR}, #{pwdSalt,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="priv.cy.owner.entity.UserInfo">
+    <!--@mbg.generated-->
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPwd != null">
+        user_pwd,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="userPhone != null">
+        user_phone,
+      </if>
+      <if test="userEmail != null">
+        user_email,
+      </if>
+      <if test="userBirthday != null">
+        user_birthday,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="isLocked != null">
+        is_locked,
+      </if>
+      <if test="userAvatar != null">
+        user_avatar,
+      </if>
+      <if test="pwdSalt != null">
+        pwd_salt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=BOOLEAN},
+      </if>
+      <if test="userPhone != null">
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthday != null">
+        #{userBirthday,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="isLocked != null">
+        #{isLocked,jdbcType=BOOLEAN},
+      </if>
+      <if test="userAvatar != null">
+        #{userAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdSalt != null">
+        #{pwdSalt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into user_info
+    (user_id, user_name, user_pwd, user_sex, user_phone, user_email, user_birthday, create_time, 
+      is_deleted, is_locked, user_avatar, pwd_salt)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=VARCHAR}, #{item.userName,jdbcType=VARCHAR}, #{item.userPwd,jdbcType=VARCHAR}, 
+        #{item.userSex,jdbcType=BOOLEAN}, #{item.userPhone,jdbcType=VARCHAR}, #{item.userEmail,jdbcType=VARCHAR}, 
+        #{item.userBirthday,jdbcType=DATE}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.isDeleted,jdbcType=BOOLEAN}, 
+        #{item.isLocked,jdbcType=BOOLEAN}, #{item.userAvatar,jdbcType=VARCHAR}, #{item.pwdSalt,jdbcType=VARCHAR}
+        )
+    </foreach>
+  </insert>
+</mapper>

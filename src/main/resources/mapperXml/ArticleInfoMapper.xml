@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.cy.owner.mapper.ArticleInfoMapper">
+  <resultMap id="BaseResultMap" type="priv.cy.owner.entity.ArticleInfo">
+    <!--@mbg.generated-->
+    <!--@Table article_info-->
+    <result column="article_id" jdbcType="VARCHAR" property="articleId" />
+    <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="article_type" jdbcType="VARCHAR" property="articleType" />
+    <result column="create_by_user" jdbcType="VARCHAR" property="createByUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by_user" jdbcType="VARCHAR" property="updateByUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_top" jdbcType="BOOLEAN" property="isTop" />
+    <result column="is_original" jdbcType="BOOLEAN" property="isOriginal" />
+    <result column="original_author" jdbcType="VARCHAR" property="originalAuthor" />
+    <result column="original_link" jdbcType="VARCHAR" property="originalLink" />
+    <result column="is_private" jdbcType="BOOLEAN" property="isPrivate" />
+    <result column="is_deleted" jdbcType="BOOLEAN" property="isDeleted" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="pageview" jdbcType="INTEGER" property="pageview" />
+    <result column="is_comment" jdbcType="BOOLEAN" property="isComment" />
+    <result column="comment_id" jdbcType="VARCHAR" property="commentId" />
+  </resultMap>
+  <insert id="insert" parameterType="priv.cy.owner.entity.ArticleInfo">
+    <!--@mbg.generated-->
+    insert into article_info (article_id, article_title, version, 
+      article_type, create_by_user, create_time, 
+      update_by_user, update_time, is_top, 
+      is_original, original_author, original_link, 
+      is_private, is_deleted, delete_time, 
+      pageview, is_comment, comment_id
+      )
+    values (#{articleId,jdbcType=VARCHAR}, #{articleTitle,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{articleType,jdbcType=VARCHAR}, #{createByUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateByUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{isTop,jdbcType=BOOLEAN}, 
+      #{isOriginal,jdbcType=BOOLEAN}, #{originalAuthor,jdbcType=VARCHAR}, #{originalLink,jdbcType=VARCHAR}, 
+      #{isPrivate,jdbcType=BOOLEAN}, #{isDeleted,jdbcType=BOOLEAN}, #{deleteTime,jdbcType=TIMESTAMP}, 
+      #{pageview,jdbcType=INTEGER}, #{isComment,jdbcType=BOOLEAN}, #{commentId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="priv.cy.owner.entity.ArticleInfo">
+    <!--@mbg.generated-->
+    insert into article_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="articleTitle != null">
+        article_title,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="articleType != null">
+        article_type,
+      </if>
+      <if test="createByUser != null">
+        create_by_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateByUser != null">
+        update_by_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isTop != null">
+        is_top,
+      </if>
+      <if test="isOriginal != null">
+        is_original,
+      </if>
+      <if test="originalAuthor != null">
+        original_author,
+      </if>
+      <if test="originalLink != null">
+        original_link,
+      </if>
+      <if test="isPrivate != null">
+        is_private,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="pageview != null">
+        pageview,
+      </if>
+      <if test="isComment != null">
+        is_comment,
+      </if>
+      <if test="commentId != null">
+        comment_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleTitle != null">
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="articleType != null">
+        #{articleType,jdbcType=VARCHAR},
+      </if>
+      <if test="createByUser != null">
+        #{createByUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateByUser != null">
+        #{updateByUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isTop != null">
+        #{isTop,jdbcType=BOOLEAN},
+      </if>
+      <if test="isOriginal != null">
+        #{isOriginal,jdbcType=BOOLEAN},
+      </if>
+      <if test="originalAuthor != null">
+        #{originalAuthor,jdbcType=VARCHAR},
+      </if>
+      <if test="originalLink != null">
+        #{originalLink,jdbcType=VARCHAR},
+      </if>
+      <if test="isPrivate != null">
+        #{isPrivate,jdbcType=BOOLEAN},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pageview != null">
+        #{pageview,jdbcType=INTEGER},
+      </if>
+      <if test="isComment != null">
+        #{isComment,jdbcType=BOOLEAN},
+      </if>
+      <if test="commentId != null">
+        #{commentId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into article_info
+    (article_id, article_title, version, article_type, create_by_user, create_time, update_by_user, 
+      update_time, is_top, is_original, original_author, original_link, is_private, is_deleted, 
+      delete_time, pageview, is_comment, comment_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.articleId,jdbcType=VARCHAR}, #{item.articleTitle,jdbcType=VARCHAR}, #{item.version,jdbcType=VARCHAR}, 
+        #{item.articleType,jdbcType=VARCHAR}, #{item.createByUser,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
+        #{item.updateByUser,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.isTop,jdbcType=BOOLEAN}, 
+        #{item.isOriginal,jdbcType=BOOLEAN}, #{item.originalAuthor,jdbcType=VARCHAR}, #{item.originalLink,jdbcType=VARCHAR}, 
+        #{item.isPrivate,jdbcType=BOOLEAN}, #{item.isDeleted,jdbcType=BOOLEAN}, #{item.deleteTime,jdbcType=TIMESTAMP}, 
+        #{item.pageview,jdbcType=INTEGER}, #{item.isComment,jdbcType=BOOLEAN}, #{item.commentId,jdbcType=VARCHAR}
+        )
+    </foreach>
+  </insert>
+</mapper>

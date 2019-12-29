@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.cy.owner.mapper.ArticlePictureInfoMapper">
+  <resultMap id="BaseResultMap" type="priv.cy.owner.entity.ArticlePictureInfo">
+    <!--@mbg.generated-->
+    <!--@Table article_picture_info-->
+    <result column="article_picture_id" jdbcType="VARCHAR" property="articlePictureId" />
+    <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
+    <result column="pictrue_name" jdbcType="VARCHAR" property="pictrueName" />
+    <result column="picture_width" jdbcType="DOUBLE" property="pictureWidth" />
+    <result column="picture_height" jdbcType="DOUBLE" property="pictureHeight" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by_user" jdbcType="VARCHAR" property="createByUser" />
+  </resultMap>
+  <insert id="insert" parameterType="priv.cy.owner.entity.ArticlePictureInfo">
+    <!--@mbg.generated-->
+    insert into article_picture_info (article_picture_id, picture_url, pictrue_name, 
+      picture_width, picture_height, create_time, 
+      create_by_user)
+    values (#{articlePictureId,jdbcType=VARCHAR}, #{pictureUrl,jdbcType=VARCHAR}, #{pictrueName,jdbcType=VARCHAR}, 
+      #{pictureWidth,jdbcType=DOUBLE}, #{pictureHeight,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createByUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="priv.cy.owner.entity.ArticlePictureInfo">
+    <!--@mbg.generated-->
+    insert into article_picture_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articlePictureId != null">
+        article_picture_id,
+      </if>
+      <if test="pictureUrl != null">
+        picture_url,
+      </if>
+      <if test="pictrueName != null">
+        pictrue_name,
+      </if>
+      <if test="pictureWidth != null">
+        picture_width,
+      </if>
+      <if test="pictureHeight != null">
+        picture_height,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createByUser != null">
+        create_by_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articlePictureId != null">
+        #{articlePictureId,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureUrl != null">
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pictrueName != null">
+        #{pictrueName,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureWidth != null">
+        #{pictureWidth,jdbcType=DOUBLE},
+      </if>
+      <if test="pictureHeight != null">
+        #{pictureHeight,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createByUser != null">
+        #{createByUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into article_picture_info
+    (article_picture_id, picture_url, pictrue_name, picture_width, picture_height, create_time, 
+      create_by_user)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.articlePictureId,jdbcType=VARCHAR}, #{item.pictureUrl,jdbcType=VARCHAR}, 
+        #{item.pictrueName,jdbcType=VARCHAR}, #{item.pictureWidth,jdbcType=DOUBLE}, #{item.pictureHeight,jdbcType=DOUBLE}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.createByUser,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

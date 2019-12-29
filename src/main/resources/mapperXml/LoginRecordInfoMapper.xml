@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.cy.owner.mapper.LoginRecordInfoMapper">
+  <resultMap id="BaseResultMap" type="priv.cy.owner.entity.LoginRecordInfo">
+    <!--@mbg.generated-->
+    <!--@Table login_record_info-->
+    <result column="login_record_id" jdbcType="VARCHAR" property="loginRecordId" />
+    <result column="login_user" jdbcType="VARCHAR" property="loginUser" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
+  </resultMap>
+  <insert id="insert" parameterType="priv.cy.owner.entity.LoginRecordInfo">
+    <!--@mbg.generated-->
+    insert into login_record_info (login_record_id, login_user, login_time, 
+      login_ip)
+    values (#{loginRecordId,jdbcType=VARCHAR}, #{loginUser,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, 
+      #{loginIp,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="priv.cy.owner.entity.LoginRecordInfo">
+    <!--@mbg.generated-->
+    insert into login_record_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginRecordId != null">
+        login_record_id,
+      </if>
+      <if test="loginUser != null">
+        login_user,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="loginIp != null">
+        login_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginRecordId != null">
+        #{loginRecordId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginUser != null">
+        #{loginUser,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginIp != null">
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into login_record_info
+    (login_record_id, login_user, login_time, login_ip)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.loginRecordId,jdbcType=VARCHAR}, #{item.loginUser,jdbcType=VARCHAR}, #{item.loginTime,jdbcType=TIMESTAMP}, 
+        #{item.loginIp,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>
