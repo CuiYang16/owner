@@ -1,12 +1,12 @@
 spring:
-#  必须加这一层，否则会报各种奇怪的错误
+  #  必须加这一层，否则会报各种奇怪的错误
   druid:
     ##数据库连接信息
     datasource:
-      url: ?useSSL=false&useOldAliasMetadataBehavior=true&characterEncoding=utf8
+      url: jdbc:mysql://39.108.254.80:3306/owner?useSSL=false&useOldAliasMetadataBehavior=true&characterEncoding=utf8
       username: root
       password: Mysql_666
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       ###################以下为druid增加的配置###########################
       type: com.alibaba.druid.pool.DruidDataSource
       # 下面为连接池的补充设置，应用到上面所有数据源中
