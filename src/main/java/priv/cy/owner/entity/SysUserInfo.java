@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class UserInfo implements Serializable {
+public class SysUserInfo implements Serializable {
     /**
     * 用户详情表
     */
@@ -65,6 +65,8 @@ public class UserInfo implements Serializable {
     * 盐
     */
     private String pwdSalt;
+
+    private Date updateTime;
 
     private static final long serialVersionUID = 1L;
 }

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.cy.owner.mapper.SysPermissionsInfoMapper">
+  <resultMap id="BaseResultMap" type="priv.cy.owner.entity.SysPermissionsInfo">
+    <!--@mbg.generated-->
+    <!--@Table sys_permissions_info-->
+    <id column="permissions_id" jdbcType="VARCHAR" property="permissionsId" />
+    <result column="permissions_name" jdbcType="VARCHAR" property="permissionsName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="is_locked" jdbcType="BOOLEAN" property="isLocked" />
+    <result column="is_deleted" jdbcType="BOOLEAN" property="isDeleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="permissions_type" jdbcType="INTEGER" property="permissionsType" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    permissions_id, permissions_name, description, is_locked, is_deleted, create_time, 
+    update_time, permissions_type, url, icon, parent_id, order_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_permissions_info
+    where permissions_id = #{permissionsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from sys_permissions_info
+    where permissions_id = #{permissionsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="priv.cy.owner.entity.SysPermissionsInfo">
+    <!--@mbg.generated-->
+    insert into sys_permissions_info (permissions_id, permissions_name, description, 
+      is_locked, is_deleted, create_time, 
+      update_time, permissions_type, url, 
+      icon, parent_id, order_num
+      )
+    values (#{permissionsId,jdbcType=VARCHAR}, #{permissionsName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{isLocked,jdbcType=BOOLEAN}, #{isDeleted,jdbcType=BOOLEAN}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{permissionsType,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{orderNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="priv.cy.owner.entity.SysPermissionsInfo">
+    <!--@mbg.generated-->
+    insert into sys_permissions_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="permissionsId != null">
+        permissions_id,
+      </if>
+      <if test="permissionsName != null">
+        permissions_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="isLocked != null">
+        is_locked,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="permissionsType != null">
+        permissions_type,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="permissionsId != null">
+        #{permissionsId,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionsName != null">
+        #{permissionsName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isLocked != null">
+        #{isLocked,jdbcType=BOOLEAN},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="permissionsType != null">
+        #{permissionsType,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="priv.cy.owner.entity.SysPermissionsInfo">
+    <!--@mbg.generated-->
+    update sys_permissions_info
+    <set>
+      <if test="permissionsName != null">
+        permissions_name = #{permissionsName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isLocked != null">
+        is_locked = #{isLocked,jdbcType=BOOLEAN},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BOOLEAN},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="permissionsType != null">
+        permissions_type = #{permissionsType,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where permissions_id = #{permissionsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="priv.cy.owner.entity.SysPermissionsInfo">
+    <!--@mbg.generated-->
+    update sys_permissions_info
+    set permissions_name = #{permissionsName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      is_locked = #{isLocked,jdbcType=BOOLEAN},
+      is_deleted = #{isDeleted,jdbcType=BOOLEAN},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      permissions_type = #{permissionsType,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      order_num = #{orderNum,jdbcType=INTEGER}
+    where permissions_id = #{permissionsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update sys_permissions_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="permissions_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.permissionsName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="description = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.description,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="is_locked = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.isLocked,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="is_deleted = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.isDeleted,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.updateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="permissions_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.permissionsType,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+      <trim prefix="url = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.url,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="icon = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.icon,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="parent_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.parentId,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="order_num = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when permissions_id = #{item.permissionsId,jdbcType=VARCHAR} then #{item.orderNum,jdbcType=INTEGER}
+        </foreach>
+      </trim>
+    </trim>
+    where permissions_id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.permissionsId,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into sys_permissions_info
+    (permissions_id, permissions_name, description, is_locked, is_deleted, create_time, 
+      update_time, permissions_type, url, icon, parent_id, order_num)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.permissionsId,jdbcType=VARCHAR}, #{item.permissionsName,jdbcType=VARCHAR}, 
+        #{item.description,jdbcType=VARCHAR}, #{item.isLocked,jdbcType=BOOLEAN}, #{item.isDeleted,jdbcType=BOOLEAN}, 
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.permissionsType,jdbcType=INTEGER}, 
+        #{item.url,jdbcType=VARCHAR}, #{item.icon,jdbcType=VARCHAR}, #{item.parentId,jdbcType=VARCHAR}, 
+        #{item.orderNum,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>
