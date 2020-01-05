@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.cy.owner.mapper.sysUserInfoMapper.SysUserInfoMapperPriv">
+    <resultMap id="BaseResultMap" type="priv.cy.owner.entity.sysUserInfo.SysUserInfo">
+        <!--@mbg.generated-->
+        <!--@Table sys_user_info-->
+        <id column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="user_pwd" jdbcType="VARCHAR" property="userPwd"/>
+        <result column="user_sex" jdbcType="BOOLEAN" property="userSex"/>
+        <result column="user_phone" jdbcType="VARCHAR" property="userPhone"/>
+        <result column="user_email" jdbcType="VARCHAR" property="userEmail"/>
+        <result column="user_birthday" jdbcType="DATE" property="userBirthday"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="is_deleted" jdbcType="BOOLEAN" property="isDeleted"/>
+        <result column="is_locked" jdbcType="BOOLEAN" property="isLocked"/>
+        <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar"/>
+        <result column="pwd_salt" jdbcType="VARCHAR" property="pwdSalt"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="All_Column">
+        <!--@mbg.generated-->
+        user_id, user_name, user_pwd, user_sex, user_phone, user_email, user_birthday, create_time,
+        is_deleted, is_locked, user_avatar, pwd_salt, update_time
+    </sql>
+
+    <select id="findUserNameByToken" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="All_Column"/>
+        from sys_user_info
+        <if test="_parameter!=null">
+
+            <where>
+                user_name=#{userName,jdbcType=VARCHAR}
+            </where>
+        </if>
+        <if test="_parameter==null">
+
+            <where>
+                1=0
+            </where>
+        </if>
+    </select>
+
+</mapper>

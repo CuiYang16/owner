@@ -1,8 +1,8 @@
-package priv.cy.owner.mapper;
+package priv.cy.owner.mapper.sysUserInfoMapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import priv.cy.owner.entity.SysUserInfo;
+import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 
 import java.util.List;
 
@@ -23,7 +23,4 @@ public interface SysUserInfoMapper {
   int updateBatch(List<SysUserInfo> list);
 
   int batchInsert(@Param("list") List<SysUserInfo> list);
-
-  // 非自动生成
-  SysUserInfo findUserNameByToken(String userName);
 }

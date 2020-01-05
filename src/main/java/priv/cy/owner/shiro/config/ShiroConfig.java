@@ -1,5 +1,6 @@
 package priv.cy.owner.shiro.config;
 
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.codec.Base64;
@@ -44,7 +45,15 @@ public class ShiroConfig {
 
     ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 
+    // 必须设置 SecurityManager
     shiroFilterFactoryBean.setSecurityManager(securityManager);
+
+    // setLoginUrl 如果不设置值，默认会自动寻找Web工程根目录下的"/login.jsp"页面 或 "/login" 映射
+    // shiroFilterFactoryBean.setLoginUrl("/user-login");
+    // 设置成功跳转的页面
+    // shiroFilterFactoryBean.setSuccessUrl("/index");
+    // 设置无权限时跳转的 url;
+    // shiroFilterFactoryBean.setUnauthorizedUrl("/notRole");
 
     // 拦截器
 
@@ -52,7 +61,7 @@ public class ShiroConfig {
 
     // 配置不会被拦截的链接 顺序判断
 
-    filterChainDefinitionMap.put("/login/**", "anon");
+    filterChainDefinitionMap.put("/user-login/**", "anon");
 
     filterChainDefinitionMap.put("/**.js", "anon");
 
@@ -77,6 +86,21 @@ public class ShiroConfig {
     shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
     return shiroFilterFactoryBean;
+  }
+
+  /**
+   * 密码校验规则HashedCredentialsMatcher，也就是密码比对器 这个类是为了对密码进行编码的 , 防止密码在数据库里明码保存 , 当然在登陆认证的时候 ,
+   * 这个类也负责对form里输入的密码进行编码 处理认证匹配处理器：如果自定义需要实现继承HashedCredentialsMatcher
+   */
+  @Bean("credentialsMatcher")
+  public HashedCredentialsMatcher hashedCredentialsMatcher() {
+    HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
+    // 指定加密方式为MD5
+    credentialsMatcher.setHashAlgorithmName("MD5");
+    // 加密次数
+    credentialsMatcher.setHashIterations(1024);
+    credentialsMatcher.setStoredCredentialsHexEncoded(true);
+    return credentialsMatcher;
   }
 
   @Bean("securityManager")
