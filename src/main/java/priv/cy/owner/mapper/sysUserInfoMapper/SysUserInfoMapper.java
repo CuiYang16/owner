@@ -8,19 +8,21 @@ import java.util.List;
 
 @Mapper
 public interface SysUserInfoMapper {
-  int deleteByPrimaryKey(String userId);
+    int deleteByPrimaryKey(String userId);
 
-  int insert(SysUserInfo record);
+    int insert(SysUserInfo record);
 
-  int insertSelective(SysUserInfo record);
+    int insertSelective(SysUserInfo record);
 
-  SysUserInfo selectByPrimaryKey(String userId);
+    SysUserInfo selectByPrimaryKey(String userId);
 
-  int updateByPrimaryKeySelective(SysUserInfo record);
+    int updateByPrimaryKeySelective(SysUserInfo record);
 
-  int updateByPrimaryKey(SysUserInfo record);
+    int updateByPrimaryKey(SysUserInfo record);
 
-  int updateBatch(List<SysUserInfo> list);
+    int updateBatch(List<SysUserInfo> list);
 
-  int batchInsert(@Param("list") List<SysUserInfo> list);
+    int batchInsert(@Param("list") List<SysUserInfo> list);
+
+    SysUserInfo findUserNameByToken(String userName);
 }

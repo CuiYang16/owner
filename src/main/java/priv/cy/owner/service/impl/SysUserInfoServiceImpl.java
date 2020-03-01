@@ -1,11 +1,15 @@
 package priv.cy.owner.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 import priv.cy.owner.mapper.sysUserInfoMapper.SysUserInfoMapper;
-import priv.cy.owner.mapper.sysUserInfoMapper.SysUserInfoMapperPriv;
+import priv.cy.owner.mapper.sysUserInfoMapper.SysUserInfoPrivMapper;
 import priv.cy.owner.service.SysUserInfoService;
+
+import javax.annotation.Resource;
 
 /**
  * @author ：cuiyang
@@ -15,14 +19,19 @@ import priv.cy.owner.service.SysUserInfoService;
 @Service
 public class SysUserInfoServiceImpl implements SysUserInfoService {
 
-  @Autowired private SysUserInfoMapper sysUserInfoMapper;
+    private static final Logger logger = LoggerFactory.getLogger(SysUserInfoServiceImpl.class);
 
-  @Autowired private SysUserInfoMapperPriv sysUserInfoMapperPriv;
+    @Autowired
+    private SysUserInfoMapper sysUserInfoMapper;
 
-  @Override
-  public SysUserInfo findUserNameByToken(String userName) {
-    SysUserInfo loginUserInfo = sysUserInfoMapperPriv.findUserNameByToken(userName);
+    @Resource
+    private SysUserInfoPrivMapper sysUserInfoMapperPriv;
 
-    return null;
-  }
+    @Override
+    public SysUserInfo findUserNameByToken(String userName) {
+        SysUserInfo loginUserInfo = sysUserInfoMapperPriv.findUserNameByToken(userName);
+
+        System.out.println(loginUserInfo.getUserName());
+        return loginUserInfo;
+    }
 }

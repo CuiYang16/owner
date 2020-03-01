@@ -8,7 +8,7 @@
         <version>2.1.11.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.cy</groupId>
+    <groupId>priv.cy.owner</groupId>
     <artifactId>owner</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>owner</name>
@@ -103,17 +103,17 @@
             <version>1.4.0</version>
         </dependency>
 
-<!--        &lt;!&ndash; springboot2.0已经将oauth2.0与security整合在一起 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; 由于一些注解和API从spring security5.0中移除，所以需要导入下面的依赖包  &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security.oauth.boot</groupId>-->
-<!--            <artifactId>spring-security-oauth2-autoconfigure</artifactId>-->
-<!--            <version>2.0.0.RELEASE</version>-->
-<!--        </dependency>-->
+        <!--        &lt;!&ndash; springboot2.0已经将oauth2.0与security整合在一起 &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-security</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; 由于一些注解和API从spring security5.0中移除，所以需要导入下面的依赖包  &ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.security.oauth.boot</groupId>-->
+        <!--            <artifactId>spring-security-oauth2-autoconfigure</artifactId>-->
+        <!--            <version>2.0.0.RELEASE</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -163,6 +163,17 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 
 </project>

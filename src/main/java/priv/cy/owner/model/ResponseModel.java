@@ -13,16 +13,16 @@ import java.util.List;
 @Data
 @Builder
 public class ResponseModel {
-  // 响应码
-  private int code;
+    // 响应码
+    private int code;
 
-  // 响应文本信息
-  private String msg;
+    // 响应文本信息
+    private String msg;
 
-  // 响应对象信息
-  private Object resObj;
+    // 响应对象信息
+    private Object resObj;
 
-  private int count;
-  // 响应集合
-  private List data;
+    private int count;
+    // 响应集合
+    private List data;
 }

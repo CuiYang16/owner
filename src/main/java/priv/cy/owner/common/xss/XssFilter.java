@@ -11,14 +11,15 @@ import java.io.IOException;
  */
 public class XssFilter implements Filter {
 
-  /* (non-Javadoc)
-   * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)
-   */
-  public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
-      throws IOException, ServletException {
+    /* (non-Javadoc)
+     * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)
+     */
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
+            throws IOException, ServletException {
 
-    XssHttpServletRequestWrapper xssRequest =
-        new XssHttpServletRequestWrapper((HttpServletRequest) request);
-    filterChain.doFilter(xssRequest, response);
-  }
+        XssHttpServletRequestWrapper xssRequest =
+                new XssHttpServletRequestWrapper((HttpServletRequest) request);
+        filterChain.doFilter(xssRequest, response);
+    }
 }
