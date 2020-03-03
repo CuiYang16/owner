@@ -7,7 +7,6 @@ import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -19,8 +18,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import priv.cy.owner.common.jwt.JwtFilter;
+import priv.cy.owner.shiro.cache.ShiroCacheManager;
 import priv.cy.owner.shiro.realm.OwnerRealm;
-import priv.cy.owner.shiro.session.CustomSessionManager;
 
 import javax.servlet.Filter;
 import java.util.HashMap;
@@ -103,42 +102,23 @@ public class ShiroConfig {
         return credentialsMatcher;
     }
 
-    @Bean("securityManager")
-    public SecurityManager securityManager(OwnerRealm ownerRealm) {
-
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-
-        securityManager.setRealm(ownerRealm);
-
-        /*
-         * 关闭shiro自带的session，详情见文档
-         * http://shiro.apache.org/session-management.html#SessionManagement-StatelessApplications%Sessionless%
-         */
-
-        DefaultSubjectDAO subjectDAO = new DefaultSubjectDAO();
-
-        DefaultSessionStorageEvaluator defaultSessionStorageEvaluator =
-                new DefaultSessionStorageEvaluator();
-
-        defaultSessionStorageEvaluator.setSessionStorageEnabled(false);
-
-        subjectDAO.setSessionStorageEvaluator(defaultSessionStorageEvaluator);
-
-        securityManager.setSubjectDAO(subjectDAO);
-
-        securityManager.setCacheManager(cacheManager());
-        // 注入记住我管理器
-        securityManager.setRememberMeManager(rememberMeManager());
-        // 注入自定义sessionManager
-        securityManager.setSessionManager(sessionManager());
-
-        return securityManager;
-    }
-
     // 自定义sessionManager
     @Bean
-    public SessionManager sessionManager() {
-        return new CustomSessionManager();
+    public DefaultWebSecurityManager securityManager(OwnerRealm shiroRealm, ShiroCacheManager shiroCacheManager) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+
+        securityManager.setRealm(shiroRealm);
+
+        //关闭shiro自带的session
+        DefaultSubjectDAO subjectDAO = new DefaultSubjectDAO();
+        DefaultSessionStorageEvaluator defaultSessionStorageEvaluator = new DefaultSessionStorageEvaluator();
+        defaultSessionStorageEvaluator.setSessionStorageEnabled(false);
+        subjectDAO.setSessionStorageEvaluator(defaultSessionStorageEvaluator);
+        securityManager.setSubjectDAO(subjectDAO);
+
+        //自定义缓存管理
+        securityManager.setCacheManager(shiroCacheManager);
+        return securityManager;
     }
 
     /**

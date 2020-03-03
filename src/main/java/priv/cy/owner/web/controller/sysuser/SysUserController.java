@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import priv.cy.owner.mapper.sysUserInfoMapper.SysUserInfoPrivMapper;
 import priv.cy.owner.model.ResponseModel;
 import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
+import priv.cy.owner.util.jwt.JwtUtil;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author ：cuiyang
@@ -33,7 +36,7 @@ public class SysUserController {
     private SysUserInfoPrivMapper sysUserInfoMapperPriv;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseModel sysUserLogin(@RequestBody ReqLoginUserInfo reqLoginUserInfo) {
+    public ResponseModel sysUserLogin(@RequestBody ReqLoginUserInfo reqLoginUserInfo, HttpServletResponse response) {
 
         String userPwd = String.valueOf(new SimpleHash(HASH_ALGORITH_NAME,
                 reqLoginUserInfo.getPassWord(), SALT, HASHI_TERATIONS));
@@ -43,7 +46,9 @@ public class SysUserController {
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(usernamePasswordToken);
-            return ResponseModel.builder().code(1).msg("").build();
+            response.setHeader("Access-Control-Expose-Headers", "Authorization");
+            response.setHeader("Authorization", JwtUtil.sign(reqLoginUserInfo.getUserName(), userPwd));
+            return ResponseModel.builder().code(20000).msg("").build();
         } catch (UnknownAccountException u) {
             return ResponseModel.builder().code(0).msg(u.getMessage()).build();
         } catch (LockedAccountException l) {

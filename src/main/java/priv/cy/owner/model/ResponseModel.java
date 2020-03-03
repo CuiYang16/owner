@@ -25,4 +25,7 @@ public class ResponseModel {
     private int count;
     // 响应集合
     private List data;
+
+    //返回token
+    private String sysToken;
 }
