@@ -1,4 +1,4 @@
-package priv.cy.owner.mapper;
+package priv.cy.owner.mapper.userrole;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;

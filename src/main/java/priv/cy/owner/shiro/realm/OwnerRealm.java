@@ -14,7 +14,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
-import priv.cy.owner.service.SysUserInfoService;
+import priv.cy.owner.service.user.SysUserInfoService;
+import priv.cy.owner.util.jwt.JwtToken;
+import priv.cy.owner.util.jwt.JwtUtil;
+import priv.cy.owner.util.redis.RedisUtil;
 
 /**
  * @author ：cuiyang
@@ -29,6 +32,13 @@ public class OwnerRealm extends AuthorizingRealm {
     @Autowired
     private SysUserInfoService sysUserInfoService;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
+    @Override
+    public boolean supports(AuthenticationToken token) {
+        return token instanceof JwtToken;
+    }
 
     /**
      * 默认使用此方法进行用户名正确与否验证，错误抛出异常即可。
@@ -36,8 +46,8 @@ public class OwnerRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
             throws AuthenticationException {
-        String userName = (String) authenticationToken.getPrincipal();
-
+        String token = (String) authenticationToken.getPrincipal();
+        String userName = JwtUtil.getUsername((String) authenticationToken.getPrincipal());
         if (StrUtil.hasBlank(userName)) {
             throw new UnsupportedTokenException("未知token");
         }
@@ -61,14 +71,19 @@ public class OwnerRealm extends AuthorizingRealm {
             throw new UnknownAccountException("账户状态异常，请联系管理员！");
         }
 
-        SimpleAuthenticationInfo authenticationInfo =
-                new SimpleAuthenticationInfo(
-                        (Object) sysUserInfo.getUserName(),
-                        (Object) sysUserInfo.getUserPwd(),
-                        ByteSource.Util.bytes(sysUserInfo.getPwdSalt()),
-                        getName());
-        logger.debug("authenticationInfo");
-        return authenticationInfo;
+        //缓存是否存在
+        if (redisUtil.hasKey(userName)) {
+            SimpleAuthenticationInfo authenticationInfo =
+                    new SimpleAuthenticationInfo(
+                            (Object) sysUserInfo.getUserName(),
+                            (Object) sysUserInfo.getUserPwd(),
+                            ByteSource.Util.bytes(sysUserInfo.getPwdSalt()),
+                            getName());
+            logger.debug("authenticationInfo");
+            return authenticationInfo;
+        }
+        throw new AuthenticationException("Token expired or incorrect.");
+
     }
 
     /**

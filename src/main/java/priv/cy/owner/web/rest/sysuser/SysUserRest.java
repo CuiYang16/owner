@@ -3,7 +3,7 @@ package priv.cy.owner.web.rest.sysuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import priv.cy.owner.service.SysUserInfoService;
+import priv.cy.owner.service.user.SysUserInfoService;
 
 /**
  * @author ：cuiyang
@@ -14,5 +14,6 @@ import priv.cy.owner.service.SysUserInfoService;
 @RequestMapping("/sysuser")
 public class SysUserRest {
 
-  @Autowired private SysUserInfoService sysUserInfoService;
+    @Autowired
+    private SysUserInfoService sysUserInfoService;
 }

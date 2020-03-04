@@ -1,8 +1,6 @@
 package priv.cy.owner.shiro.config;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.cache.CacheManager;
-import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
@@ -17,7 +15,7 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
-import priv.cy.owner.common.jwt.JwtFilter;
+import priv.cy.owner.common.jwt.JWTFilter;
 import priv.cy.owner.shiro.cache.ShiroCacheManager;
 import priv.cy.owner.shiro.realm.OwnerRealm;
 
@@ -35,10 +33,10 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
-    @Bean
-    public CacheManager cacheManager() {
-        return new MemoryConstrainedCacheManager();
-    }
+    //@Bean
+    //public CacheManager cacheManager() {
+    //    return new ShiroCacheManager();
+    //}
 
     @Bean("shiroFilter")
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
@@ -70,7 +68,7 @@ public class ShiroConfig {
 
         Map<String, Filter> filterMap = new HashMap<String, Filter>();
 
-        filterMap.put("jwt", new JwtFilter());
+        filterMap.put("jwt", new JWTFilter());
 
         shiroFilterFactoryBean.setFilters(filterMap);
 
@@ -181,4 +179,11 @@ public class ShiroConfig {
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
     }
+
+    @Bean(name = "jwtFilter")
+    public JWTFilter jwtFilter() {
+        return new JWTFilter();
+    }
+
+
 }

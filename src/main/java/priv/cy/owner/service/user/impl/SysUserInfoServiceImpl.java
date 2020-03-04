@@ -1,13 +1,13 @@
-package priv.cy.owner.service.impl;
+package priv.cy.owner.service.user.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
-import priv.cy.owner.mapper.sysUserInfoMapper.SysUserInfoMapper;
-import priv.cy.owner.mapper.sysUserInfoMapper.SysUserInfoPrivMapper;
-import priv.cy.owner.service.SysUserInfoService;
+import priv.cy.owner.mapper.user.SysUserInfoMapper;
+import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
+import priv.cy.owner.service.user.SysUserInfoService;
 
 import javax.annotation.Resource;
 

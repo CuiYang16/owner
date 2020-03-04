@@ -2,7 +2,7 @@ package priv.cy.owner.sysuser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
-import priv.cy.owner.mapper.sysUserInfoMapper.SysUserInfoPrivMapper;
+import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
 
 /**
  * @author ：cuiyang

@@ -1,4 +1,4 @@
-package priv.cy.owner.mapper.sysUserInfoMapper;
+package priv.cy.owner.mapper.user;
 
 import org.apache.ibatis.annotations.Mapper;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;

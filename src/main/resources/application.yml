@@ -42,3 +42,8 @@ token:
   shiroCacheExpireTime: 120
   #  token加密密钥
   secretKey: storywebkey
+
+#可匿名访问的链接
+jwt:
+  anonymous:
+    urls: sysuser/login, sysuser/lgout

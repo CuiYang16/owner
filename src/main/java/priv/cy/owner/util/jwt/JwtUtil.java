@@ -14,71 +14,72 @@ import java.util.Date;
  * @date ：Created in 2019/12/30 20:44
  */
 public class JwtUtil {
-  private static final long EXPIRE_TIME = 5 * 60 * 1000;
+    private static final long EXPIRE_TIME = 5 * 60 * 1000;
 
-  /**
-   * 校验token是否正确
-   *
-   * @param token 密钥
-   * @param secret 用户的密码
-   * @return 是否正确
-   */
-  public static boolean verify(String token, String username, String secret) {
+    /**
+     * 校验token是否正确
+     *
+     * @param token  密钥
+     * @param secret 用户的密码
+     * @return 是否正确
+     */
+    public static boolean verify(String token, String username, String secret) {
 
-    try {
+        try {
 
-      // 根据密码生成JWT效验器
+            // 根据密码生成JWT效验器
 
-      Algorithm algorithm = Algorithm.HMAC256(secret);
+            Algorithm algorithm = Algorithm.HMAC256(secret);
 
-      JWTVerifier verifier = JWT.require(algorithm).withClaim("username", username).build();
+            JWTVerifier verifier = JWT.require(algorithm).withClaim("username", username).build();
 
-      // 效验TOKEN
+            // 效验TOKEN
 
-      DecodedJWT jwt = verifier.verify(token);
+            DecodedJWT jwt = verifier.verify(token);
 
-      return true;
+            return true;
 
-    } catch (Exception exception) {
+        } catch (Exception exception) {
 
-      return false;
+            return false;
+        }
     }
-  }
 
-  /**
-   * 获得token中的信息无需secret解密也能获得
-   *
-   * @return token中包含的用户名
-   */
-  public static String getUsername(String token) {
 
-    try {
+    /**
+     * 获得token中的信息无需secret解密也能获得
+     *
+     * @return token中包含的用户名
+     */
+    public static String getUsername(String token) {
 
-      DecodedJWT jwt = JWT.decode(token);
+        try {
 
-      return jwt.getClaim("username").asString();
+            DecodedJWT jwt = JWT.decode(token);
 
-    } catch (JWTDecodeException e) {
+            return jwt.getClaim("username").asString();
 
-      return null;
+        } catch (JWTDecodeException e) {
+
+            return null;
+        }
     }
-  }
 
-  /**
-   * 生成签名,5min后过期
-   *
-   * @param username 用户名
-   * @param secret 用户的密码
-   * @return 加密的token
-   */
-  public static String sign(String username, String secret) {
+    /**
+     * 生成签名,5min后过期
+     *
+     * @param username 用户名
+     * @param secret   用户的密码
+     * @return 加密的token
+     */
+    public static String sign(String username, String secret) {
 
-    Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+        Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
 
-    Algorithm algorithm = Algorithm.HMAC256(secret);
+        Algorithm algorithm = Algorithm.HMAC256(secret);
 
-    // 附带username信息
+        // 附带username信息
 
-    return JWT.create().withClaim("username", username).withExpiresAt(date).sign(algorithm);
-  }
+        return JWT.create().withClaim("username", username).withExpiresAt(date).sign(algorithm);
+    }
 }

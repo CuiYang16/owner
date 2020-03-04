@@ -2,6 +2,7 @@ package priv.cy.owner.shiro.cache;
 
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
+import org.springframework.beans.factory.annotation.Autowired;
 import priv.cy.owner.util.jwt.JwtProperties;
 import priv.cy.owner.util.jwt.JwtUtil;
 import priv.cy.owner.util.redis.RedisUtil;
@@ -17,6 +18,8 @@ import java.util.Set;
  * @date ：Created in 2020/3/3 14:45
  */
 public class ShiroCache<K, V> implements Cache<K, V> {
+
+    @Autowired
     private RedisUtil redisUtil;
 
     private JwtProperties jwtProperties;
