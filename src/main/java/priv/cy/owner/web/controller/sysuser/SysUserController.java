@@ -16,6 +16,7 @@ import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
 import priv.cy.owner.model.ResponseModel;
 import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
+import priv.cy.owner.model.sysuser.ResUserInfo;
 import priv.cy.owner.service.role.SysUserRoleService;
 import priv.cy.owner.service.userrole.UserRoleService;
 import priv.cy.owner.util.jwt.JwtProperties;
@@ -25,6 +26,7 @@ import priv.cy.owner.util.redis.RedisUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -103,8 +105,15 @@ public class SysUserController {
         String userName = JwtUtil.getUsername(token);
         List<SysRoleInfo> rolesByRoleIds = sysUserRoleService.getRolesByRoleIds(userRoleService.getRoleByUserName(userName));
 
+        List<String> roles = new ArrayList<String>();
 
-        return ResponseModel.builder().code(20000).msg("").list(rolesByRoleIds).build();
+        rolesByRoleIds.forEach(r -> {
+            roles.add(r.getRoleName());
+        });
+
+        return ResponseModel.builder().code(20000).msg("").list(roles)
+                .resObj(ResUserInfo.builder().userName(userName).userAvatar("E:\\IdeaWorkSpace\\MyWorkSpace\\owner\\src\\main" +
+                        "\\resources\\static\\images\\avatar\\head_default.jpg").introduction("vbbbb").build()).build();
     }
 }
 
