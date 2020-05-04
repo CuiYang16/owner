@@ -1,8 +1,9 @@
 package priv.cy.owner.service.user;
 
-import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
+import priv.cy.owner.model.ResultInfo;
+import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
 
 public interface SysUserInfoService {
 
-    SysUserInfo findUserNameByToken(String UserName);
+    ResultInfo findUserNameByToken(ReqLoginUserInfo reqLoginUserInfo);
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
+import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
 import priv.cy.owner.service.user.SysUserInfoService;
 import priv.cy.owner.util.jwt.JwtToken;
 import priv.cy.owner.util.jwt.JwtUtil;
@@ -35,7 +36,8 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
     private RedisUtil redisUtil;
     @Autowired
     private SysUserInfoService userService;
-
+    @Autowired
+    private SysUserInfoPrivMapper sysUserInfoMapperPriv;
 
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
@@ -99,7 +101,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
         String redisUserInfo = (String) redisUtil.get(key);
         if (redisUserInfo != null) {
             if (oldToken.equals(redisUserInfo)) {
-                SysUserInfo vo = this.userService.findUserNameByToken(userName);
+                SysUserInfo vo = sysUserInfoMapperPriv.findUserNameByToken(userName);
                 //重写生成token(刷新)
                 String newTokenStr = JwtUtil.sign(vo.getUserName(), vo.getUserPwd());
                 JwtToken jwtToken = new JwtToken(newTokenStr);

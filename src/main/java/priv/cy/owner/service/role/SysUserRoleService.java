@@ -1,9 +1,9 @@
 package priv.cy.owner.service.role;
 
-import priv.cy.owner.entity.SysRoleInfo;
+import priv.cy.owner.model.ResultInfo;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 public interface SysUserRoleService {
-    List<SysRoleInfo> getRolesByRoleIds(List<String> roleIds);
+    ResultInfo getRolesByRoleIds(HttpServletRequest request);
 }

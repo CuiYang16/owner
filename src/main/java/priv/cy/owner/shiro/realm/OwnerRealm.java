@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
+import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
 import priv.cy.owner.service.user.SysUserInfoService;
 import priv.cy.owner.util.jwt.JwtToken;
 import priv.cy.owner.util.jwt.JwtUtil;
@@ -32,6 +33,8 @@ public class OwnerRealm extends AuthorizingRealm {
     @Autowired
     private SysUserInfoService sysUserInfoService;
 
+    @Autowired
+    private SysUserInfoPrivMapper sysUserInfoMapperPriv;
     @Autowired
     private RedisUtil redisUtil;
 
@@ -52,7 +55,7 @@ public class OwnerRealm extends AuthorizingRealm {
             throw new UnsupportedTokenException("未知token");
         }
 
-        SysUserInfo sysUserInfo = sysUserInfoService.findUserNameByToken(userName);
+        SysUserInfo sysUserInfo = sysUserInfoMapperPriv.findUserNameByToken(userName);
 
         // 用户不存在
         if (ObjectUtil.isNull(sysUserInfo)
