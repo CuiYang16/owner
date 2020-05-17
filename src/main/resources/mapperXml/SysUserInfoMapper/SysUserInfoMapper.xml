@@ -7,13 +7,13 @@
         <id column="user_id" jdbcType="VARCHAR" property="userId"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         <result column="user_pwd" jdbcType="VARCHAR" property="userPwd"/>
-        <result column="user_sex" jdbcType="BOOLEAN" property="userSex"/>
+        <result column="user_sex" jdbcType="TINYINT" property="userSex"/>
         <result column="user_phone" jdbcType="VARCHAR" property="userPhone"/>
         <result column="user_email" jdbcType="VARCHAR" property="userEmail"/>
         <result column="user_birthday" jdbcType="DATE" property="userBirthday"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="is_deleted" jdbcType="BOOLEAN" property="isDeleted"/>
-        <result column="is_locked" jdbcType="BOOLEAN" property="isLocked"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+        <result column="is_locked" jdbcType="TINYINT" property="isLocked"/>
         <result column="user_avatar" jdbcType="VARCHAR" property="userAvatar"/>
         <result column="pwd_salt" jdbcType="VARCHAR" property="pwdSalt"/>
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>

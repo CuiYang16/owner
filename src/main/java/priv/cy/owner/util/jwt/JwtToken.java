@@ -18,12 +18,12 @@ public class JwtToken implements AuthenticationToken {
     @Override
     public Object getPrincipal() {
 
-        return token;
+        return JwtUtil.getUsername(token);
     }
 
     @Override
     public Object getCredentials() {
 
-        return token;
+        return JwtUtil.getPassword(token);
     }
 }

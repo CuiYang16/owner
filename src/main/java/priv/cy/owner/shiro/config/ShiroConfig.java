@@ -11,11 +11,16 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
+import org.crazycake.shiro.RedisCacheManager;
+import org.crazycake.shiro.RedisManager;
+import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import priv.cy.owner.common.jwt.JWTFilter;
+import priv.cy.owner.config.redis.RedisConfig;
 import priv.cy.owner.shiro.cache.ShiroCacheManager;
 import priv.cy.owner.shiro.realm.OwnerRealm;
 
@@ -38,6 +43,7 @@ public class ShiroConfig {
     //    return new ShiroCacheManager();
     //}
 
+
     @Bean("shiroFilter")
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
 
@@ -47,7 +53,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
         // setLoginUrl 如果不设置值，默认会自动寻找Web工程根目录下的"/login.jsp"页面 或 "/login" 映射
-        shiroFilterFactoryBean.setLoginUrl("/sysuser/login");
+        // shiroFilterFactoryBean.setLoginUrl("/sysuser/login");
         // 设置成功跳转的页面
         // shiroFilterFactoryBean.setSuccessUrl("/index");
         // 设置无权限时跳转的 url;
@@ -59,8 +65,10 @@ public class ShiroConfig {
         // 配置不会被拦截的链接 顺序判断
 
         filterChainDefinitionMap.put("/sysuser/login", "anon");
-
+        filterChainDefinitionMap.put("/**", "anon");
         filterChainDefinitionMap.put("/**.js", "anon");
+        //管理员，需要角色权限 “admin”
+        //filterChainDefinitionMap.put("/sysuser/users", "admin");
 
         filterChainDefinitionMap.put("/druid/**", "anon");
 
@@ -79,7 +87,7 @@ public class ShiroConfig {
         // 未授权界面;
 
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
-
+        shiroFilterFactoryBean.setLoginUrl("/sysuser/unauth");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;
@@ -105,8 +113,6 @@ public class ShiroConfig {
     public DefaultWebSecurityManager securityManager(OwnerRealm shiroRealm, ShiroCacheManager shiroCacheManager) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
 
-        securityManager.setRealm(shiroRealm);
-
         //关闭shiro自带的session
         DefaultSubjectDAO subjectDAO = new DefaultSubjectDAO();
         DefaultSessionStorageEvaluator defaultSessionStorageEvaluator = new DefaultSessionStorageEvaluator();
@@ -115,9 +121,76 @@ public class ShiroConfig {
         securityManager.setSubjectDAO(subjectDAO);
 
         //自定义缓存管理
-        securityManager.setCacheManager(shiroCacheManager);
+        securityManager.setCacheManager(cacheManager());
+        securityManager.setSessionManager(sessionManager());
+        securityManager.setRealm(shiroRealm);
         return securityManager;
     }
+
+    /**
+     * 配置shiro redisManager
+     * 使用的是shiro-redis开源插件
+     *
+     * @return
+     */
+    public RedisManager redisManager() {
+        RedisManager redisManager = new RedisManager();
+        redisManager.setJedisPool(RedisConfig.getJedisPoolInstance());
+
+        return redisManager;
+    }
+
+    /**
+     * cacheManager 缓存 redis实现
+     * 使用的是shiro-redis开源插件
+     *
+     * @return
+     */
+    public RedisCacheManager cacheManager() {
+        RedisCacheManager redisCacheManager = new RedisCacheManager();
+        redisCacheManager.setRedisManager(redisManager());
+        return redisCacheManager;
+    }
+
+    /**
+     * RedisSessionDAO shiro sessionDao层的实现 通过redis
+     * 使用的是shiro-redis开源插件
+     */
+    @Bean
+    public RedisSessionDAO redisSessionDAO() {
+        RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
+        redisSessionDAO.setRedisManager(redisManager());
+        return redisSessionDAO;
+    }
+
+    /**
+     * Session Manager
+     * 使用的是shiro-redis开源插件
+     */
+    @Bean
+    public DefaultWebSessionManager sessionManager() {
+        DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+        sessionManager.setSessionDAO(redisSessionDAO());
+        return sessionManager;
+    }
+
+    //@Bean("redisSessionManager")
+    //public SessionManager redisSessionManager() {
+    //    DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+    //    Collection<SessionListener> listeners = new ArrayList<SessionListener>();
+    //    //配置监听
+    //    listeners.add(sessionListener());
+    //    sessionManager.setSessionListeners(listeners);
+    //    sessionManager.setSessionIdCookie(sessionIdCookie());
+    //    sessionManager.setSessionDAO(redisSessionDAO());
+    //    sessionManager.setCacheManager(cacheManager());
+    //    //sessionManager.setGlobalSessionTimeout(60000);    //全局会话超时时间（单位毫秒），默认30分钟  暂时设置为10秒钟 用来测试
+    //    sessionManager.setDeleteInvalidSessions(true);
+    //    //取消url 后面的 JSESSIONID
+    //    sessionManager.setSessionIdUrlRewritingEnabled(false);
+    //    return sessionManager;
+    //
+    //}
 
     /**
      * cookie对象; rememberMeCookie()方法是设置Cookie的生成模版，比如cookie的name，cookie的有效时间等等。

@@ -47,4 +47,13 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
         return ResultInfo.ok().data("roles", roles).data("userName", userName);
 
     }
+
+
+    @Override
+    public List<SysRoleInfo> getRolesByUserName(String userName) {
+
+        List<SysRoleInfo> roles =
+                sysRoleInfoPrivMapper.selectRoleByRoleId(userRoleService.getRoleByUserName(userName));
+        return roles;
+    }
 }

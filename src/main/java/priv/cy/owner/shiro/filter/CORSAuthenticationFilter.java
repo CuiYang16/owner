@@ -34,6 +34,7 @@ public class CORSAuthenticationFilter extends FormAuthenticationFilter {
         // Always return true if the request's method is OPTIONS
         if (request instanceof HttpServletRequest) {
             if (((HttpServletRequest) request).getMethod().toUpperCase().equals("OPTIONS")) {
+                System.out.println("option");
                 return true;
             }
         }
@@ -46,7 +47,8 @@ public class CORSAuthenticationFilter extends FormAuthenticationFilter {
 
         String token = getRequestToken((HttpServletRequest) request);
         String login = ((HttpServletRequest) request).getServletPath();
-
+        System.out.println("optioddddn");
+        logger.debug(token, login);
         //如果为登录,就放行
         if ("/sysuser/login".equals(login)) {
             return true;
@@ -60,6 +62,7 @@ public class CORSAuthenticationFilter extends FormAuthenticationFilter {
         SysUserInfo user = (SysUserInfo) SecurityUtils.getSubject().getPrincipal();
         //对当前ID进行SHA256加密
         String encryptionKey = DigestUtils.sha256Hex(SINGNATURE_TOKEN + user.getUserName());
+        logger.debug(encryptionKey);
         if (encryptionKey.equals(token)) {
             return true;
         } else {
@@ -83,7 +86,7 @@ public class CORSAuthenticationFilter extends FormAuthenticationFilter {
 
     private String getRequestToken(HttpServletRequest request) {
         //默认从请求头中获得token
-        String token = request.getHeader("token");
+        String token = request.getHeader("Authorization");
         //如果header中不存在token，则从参数中获取token
         if (StringUtils.isBlank(token)) {
             token = request.getParameter("token");

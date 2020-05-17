@@ -2,6 +2,8 @@ package priv.cy.owner.service.user.impl;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
@@ -9,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
-import priv.cy.owner.mapper.user.SysUserInfoMapper;
 import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
 import priv.cy.owner.model.ResultInfo;
 import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
@@ -18,6 +19,9 @@ import priv.cy.owner.util.jwt.JwtProperties;
 import priv.cy.owner.util.jwt.JwtToken;
 import priv.cy.owner.util.jwt.JwtUtil;
 import priv.cy.owner.util.redis.RedisUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author ：cuiyang
@@ -33,8 +37,6 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
     private static final long REFRESH_JWT_TOKEN_EXPIRE_TIME = 30L;
     private static final Logger logger = LoggerFactory.getLogger(SysUserInfoServiceImpl.class);
 
-    @Autowired
-    private SysUserInfoMapper sysUserInfoMapper;
 
     @Autowired
     private SysUserInfoPrivMapper sysUserInfoMapperPriv;
@@ -55,7 +57,7 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
         SysUserInfo loginUser = sysUserInfoMapperPriv.findUserNameByToken(reqLoginUserInfo.getUserName());
 
         JwtToken jwtToken = new JwtToken(token);
-
+        logger.debug(loginUser.getUserName());
         if (!ObjectUtil.isNull(loginUser)
                 && !StrUtil.hasBlank(loginUser.getUserPwd())
                 && !StrUtil.hasBlank(loginUser.getPwdSalt())) {
@@ -65,5 +67,20 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
         } else {
             throw new RuntimeException("请刷新重试.");
         }
+    }
+
+
+    @Override
+    public PageInfo<SysUserInfo> getAllUsers(Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<SysUserInfo> sysUserInfos = sysUserInfoMapperPriv.selectAllUser();
+        PageInfo<SysUserInfo> pageInfo = new PageInfo<SysUserInfo>(sysUserInfos);
+        pageInfo.setPageNum(currentPage);
+        pageInfo.setPageSize(pageSize);
+
+        if (sysUserInfos.size() <= 0) {
+            pageInfo.setList(new ArrayList<>());
+        }
+        return pageInfo;
     }
 }

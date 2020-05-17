@@ -51,7 +51,7 @@ public class CrosXssFilter implements Filter {
         //    JSONObject.toJSONString(httpServletRequest.getParameterMap()));
         XssHttpServletRequestWrapper xssHttpServletRequestWrapper =
                 new XssHttpServletRequestWrapper(httpServletRequest);
-        chain.doFilter(xssHttpServletRequestWrapper, response);
+        chain.doFilter(request, response);
         //logger.info(
         //        "CrosXssFilter..........doFilter url:{},ParameterMap:{}",
         //        xssHttpServletRequestWrapper.getRequestURI(),

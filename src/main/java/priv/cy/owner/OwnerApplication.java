@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import priv.cy.owner.util.jwt.JwtProperties;
 
+
 @EnableConfigurationProperties({JwtProperties.class})
 @ServletComponentScan
 @SpringBootApplication

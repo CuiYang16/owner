@@ -11,7 +11,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
-import priv.cy.owner.service.user.SysUserInfoService;
 import priv.cy.owner.util.jwt.JwtToken;
 import priv.cy.owner.util.jwt.JwtUtil;
 import priv.cy.owner.util.redis.RedisUtil;
@@ -35,13 +34,18 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
     @Autowired
     private RedisUtil redisUtil;
     @Autowired
-    private SysUserInfoService userService;
-    @Autowired
     private SysUserInfoPrivMapper sysUserInfoMapperPriv;
 
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
         String contextPath = WebUtils.getPathWithinApplication(WebUtils.toHttp(servletRequest));
+        if (!StringUtils.isEmpty(anonymousStr)) {
+            //获取请求头token
+            AuthenticationToken token = this.createToken(servletRequest, servletResponse);
+            this.getSubject(servletRequest, servletResponse).login(token);
+            return true;
+        }
+
         if (!StringUtils.isEmpty(anonymousStr)) {
             String[] anonUrls = anonymousStr.split(",");
             //匿名可访问的url
@@ -51,8 +55,10 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
                 }
             }
         }
+
         //获取请求头token
         AuthenticationToken token = this.createToken(servletRequest, servletResponse);
+
         if (token.getPrincipal() == null) {
             handler401(servletResponse, CodeAndMsgEnum.UNAUTHENTIC.getcode(), CodeAndMsgEnum.UNAUTHENTIC.getMsg());
             return false;
@@ -60,6 +66,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
             try {
                 //shiro登录
                 this.getSubject(servletRequest, servletResponse).login(token);
+                System.out.println("getSubject");
                 return true;
             } catch (Exception e) {
                 String msg = e.getMessage();

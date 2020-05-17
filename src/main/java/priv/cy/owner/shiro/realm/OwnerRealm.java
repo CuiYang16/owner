@@ -12,13 +12,16 @@ import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import priv.cy.owner.entity.SysRoleInfo;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
-import priv.cy.owner.service.user.SysUserInfoService;
+import priv.cy.owner.service.role.SysUserRoleService;
 import priv.cy.owner.util.jwt.JwtToken;
-import priv.cy.owner.util.jwt.JwtUtil;
 import priv.cy.owner.util.redis.RedisUtil;
+
+import java.util.List;
 
 /**
  * @author ：cuiyang
@@ -30,11 +33,15 @@ public class OwnerRealm extends AuthorizingRealm {
 
     private static final Logger logger = LoggerFactory.getLogger(OwnerRealm.class);
 
-    @Autowired
-    private SysUserInfoService sysUserInfoService;
 
     @Autowired
+    @Lazy
     private SysUserInfoPrivMapper sysUserInfoMapperPriv;
+
+
+    @Autowired
+    private SysUserRoleService sysUserRoleService;
+
     @Autowired
     private RedisUtil redisUtil;
 
@@ -49,8 +56,8 @@ public class OwnerRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
             throws AuthenticationException {
-        String token = (String) authenticationToken.getPrincipal();
-        String userName = JwtUtil.getUsername((String) authenticationToken.getPrincipal());
+
+        String userName = (String) authenticationToken.getPrincipal();
         if (StrUtil.hasBlank(userName)) {
             throw new UnsupportedTokenException("未知token");
         }
@@ -65,12 +72,12 @@ public class OwnerRealm extends AuthorizingRealm {
         }
 
         // 账户锁定
-        if (sysUserInfo.getIsLocked()) {
+        if (sysUserInfo.getIsLocked() == 1) {
             throw new LockedAccountException("账户被锁定，请联系管理员！");
         }
 
         // 账户删除
-        if (sysUserInfo.getIsDeleted()) {
+        if (sysUserInfo.getIsDeleted() == 1) {
             throw new UnknownAccountException("账户状态异常，请联系管理员！");
         }
 
@@ -82,7 +89,7 @@ public class OwnerRealm extends AuthorizingRealm {
                             (Object) sysUserInfo.getUserPwd(),
                             ByteSource.Util.bytes(sysUserInfo.getPwdSalt()),
                             getName());
-            logger.debug("authenticationInfo");
+            logger.debug(userName + "redis存在token");
             return authenticationInfo;
         }
         throw new AuthenticationException("Token expired or incorrect.");
@@ -96,14 +103,20 @@ public class OwnerRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
 
 
-        logger.info("----------------------------->" + principalCollection.getPrimaryPrincipal());
+        logger.info("----------授权------------------->" + principalCollection.getPrimaryPrincipal());
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        SysUserInfo sysUserInfo = (SysUserInfo) principalCollection.getPrimaryPrincipal();
+        String userName = (String) principalCollection.getPrimaryPrincipal();
         try {
 
             // 此处如果多个角色都拥有某项权限，bu会数据重复，内部用的是Set
+            List<SysRoleInfo> roles = sysUserRoleService.getRolesByUserName(userName);
 
+            roles.forEach(r -> {
+                logger.debug(r.getRoleName());
+                authorizationInfo.addRole(r.getRoleName());
+            });
+            authorizationInfo.addStringPermission("管理员");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -111,4 +124,52 @@ public class OwnerRealm extends AuthorizingRealm {
         logger.debug("auth");
         return authorizationInfo;
     }
+
+    /**
+     * 重写方法,清除当前用户的的 授权缓存
+     *
+     * @param principals
+     */
+    @Override
+    public void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthorizationInfo(principals);
+    }
+
+    /**
+     * 重写方法，清除当前用户的 认证缓存
+     *
+     * @param principals
+     */
+    @Override
+    public void clearCachedAuthenticationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthenticationInfo(principals);
+    }
+
+    @Override
+    public void clearCache(PrincipalCollection principals) {
+        super.clearCache(principals);
+    }
+
+    /**
+     * 自定义方法：清除所有 授权缓存
+     */
+    public void clearAllCachedAuthorizationInfo() {
+        getAuthorizationCache().clear();
+    }
+
+    /**
+     * 自定义方法：清除所有 认证缓存
+     */
+    public void clearAllCachedAuthenticationInfo() {
+        getAuthenticationCache().clear();
+    }
+
+    /**
+     * 自定义方法：清除所有的  认证缓存  和 授权缓存
+     */
+    public void clearAllCache() {
+        clearAllCachedAuthenticationInfo();
+        clearAllCachedAuthorizationInfo();
+    }
+
 }

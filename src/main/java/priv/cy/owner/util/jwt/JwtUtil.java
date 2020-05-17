@@ -14,7 +14,7 @@ import java.util.Date;
  * @date ：Created in 2019/12/30 20:44
  */
 public class JwtUtil {
-    private static final long EXPIRE_TIME = 5 * 60 * 1000;
+    private static final long EXPIRE_TIME = 50 * 60 * 1000;
 
     /**
      * 校验token是否正确
@@ -65,6 +65,20 @@ public class JwtUtil {
         }
     }
 
+    public static String getPassword(String token) {
+
+        try {
+
+            DecodedJWT jwt = JWT.decode(token);
+
+            return jwt.getClaim("password").asString();
+
+        } catch (JWTDecodeException e) {
+
+            return null;
+        }
+    }
+
     /**
      * 生成签名,5min后过期
      *
@@ -80,6 +94,6 @@ public class JwtUtil {
 
         // 附带username信息
 
-        return JWT.create().withClaim("username", username).withExpiresAt(date).sign(algorithm);
+        return JWT.create().withClaim("username", username).withClaim("password", secret).withExpiresAt(date).sign(algorithm);
     }
 }
