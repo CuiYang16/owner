@@ -18,4 +18,11 @@ public interface SysUserInfoPrivMapper {
      * @return
      */
     List<SysUserInfo> selectAllUser();
+
+    /**
+     * 创建新用户
+     *
+     * @param sysUserInfo
+     */
+    String insertSysUser(SysUserInfo sysUserInfo);
 }

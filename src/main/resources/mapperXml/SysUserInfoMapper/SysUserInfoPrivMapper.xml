@@ -44,4 +44,91 @@
 
     </select>
 
+    <insert id="insertSysUser" parameterType="priv.cy.owner.entity.sysUserInfo.SysUserInfo" useGeneratedKeys="true"
+            keyColumn="user_id">
+        <!--@mbg.generated-->
+        insert into sys_user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="userPwd != null">
+                user_pwd,
+            </if>
+            <if test="userSex != null">
+                user_sex,
+            </if>
+            <if test="userPhone != null">
+                user_phone,
+            </if>
+            <if test="userEmail != null">
+                user_email,
+            </if>
+            <if test="userBirthday != null">
+                user_birthday,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="isDeleted != null">
+                is_deleted,
+            </if>
+            <if test="isLocked != null">
+                is_locked,
+            </if>
+            <if test="userAvatar != null">
+                user_avatar,
+            </if>
+            <if test="pwdSalt != null">
+                pwd_salt,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userPwd != null">
+                #{userPwd,jdbcType=VARCHAR},
+            </if>
+            <if test="userSex != null">
+                #{userSex,jdbcType=BOOLEAN},
+            </if>
+            <if test="userPhone != null">
+                #{userPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="userEmail != null">
+                #{userEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="userBirthday != null">
+                #{userBirthday,jdbcType=DATE},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDeleted != null">
+                #{isDeleted,jdbcType=BOOLEAN},
+            </if>
+            <if test="isLocked != null">
+                #{isLocked,jdbcType=BOOLEAN},
+            </if>
+            <if test="userAvatar != null">
+                #{userAvatar,jdbcType=VARCHAR},
+            </if>
+            <if test="pwdSalt != null">
+                #{pwdSalt,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
 </mapper>

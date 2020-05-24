@@ -9,9 +9,16 @@ import lombok.Data;
  */
 @Data
 public class ReqLoginUserInfo {
-  /** 用户名 */
-  private String userName;
+    /**
+     * 用户名
+     */
+    private String userName;
 
-  /** 密码 */
-  private String passWord;
+    /**
+     * 密码
+     */
+    private String passWord;
+
+    //记住我
+    private Boolean rememberMe;
 }

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
+import priv.cy.owner.exception.CMSException;
 import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
+import priv.cy.owner.model.ResultCodeEnum;
 import priv.cy.owner.util.jwt.JwtToken;
 import priv.cy.owner.util.jwt.JwtUtil;
 import priv.cy.owner.util.redis.RedisUtil;
@@ -39,12 +41,6 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
         String contextPath = WebUtils.getPathWithinApplication(WebUtils.toHttp(servletRequest));
-        if (!StringUtils.isEmpty(anonymousStr)) {
-            //获取请求头token
-            AuthenticationToken token = this.createToken(servletRequest, servletResponse);
-            this.getSubject(servletRequest, servletResponse).login(token);
-            return true;
-        }
 
         if (!StringUtils.isEmpty(anonymousStr)) {
             String[] anonUrls = anonymousStr.split(",");
@@ -60,31 +56,32 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
         AuthenticationToken token = this.createToken(servletRequest, servletResponse);
 
         if (token.getPrincipal() == null) {
-            handler401(servletResponse, CodeAndMsgEnum.UNAUTHENTIC.getcode(), CodeAndMsgEnum.UNAUTHENTIC.getMsg());
-            return false;
+            //handler401(servletResponse, CodeAndMsgEnum.UNAUTHENTIC.getcode(), CodeAndMsgEnum.UNAUTHENTIC.getMsg());
+            //return false;
+            throw new CMSException(ResultCodeEnum.USER_TOKEN_INCORRECT);
         } else {
             try {
                 //shiro登录
                 this.getSubject(servletRequest, servletResponse).login(token);
-                System.out.println("getSubject");
                 return true;
             } catch (Exception e) {
-                String msg = e.getMessage();
-                //token错误
-                if (msg.contains("incorrect")) {
-                    handler401(servletResponse, CodeAndMsgEnum.UNAUTHENTIC.getcode(), msg);
-                    return false;
-                    //token过期
-                } else if (msg.contains("expired")) {
-                    //尝试刷新token
-                    if (this.refreshToken(servletRequest, servletResponse)) {
-                        return true;
-                    } else {
-                        handler401(servletResponse, CodeAndMsgEnum.UNAUTHENTIC.getcode(), "token已过期,请重新登录");
-                        return false;
-                    }
-                }
-                handler401(servletResponse, CodeAndMsgEnum.UNAUTHENTIC.getcode(), msg);
+                //String msg = e.getMessage();
+                ////token错误
+                //if (msg.contains("incorrect")) {
+                //    //handler401(servletResponse, CodeAndMsgEnum.UNAUTHENTIC.getcode(), msg);
+                //    throw new CMSException(ResultCodeEnum.UNAUTHENTIC.getCode(), ResultCodeEnum.UNAUTHENTIC.getMessage());
+                //    return false;
+                //    //token过期
+                //} else if (msg.contains("expired")) {
+                //    //尝试刷新token
+                //    if (this.refreshToken(servletRequest, servletResponse)) {
+                //        return true;
+                //    } else {
+                //        handler401(servletResponse, CodeAndMsgEnum.UNAUTHENTIC.getcode(), "token已过期,请重新登录");
+                //        return false;
+                //    }
+                //}
+                handler401(servletResponse, ResultCodeEnum.USER_TOKEN_EXPIRED);
                 return false;
             }
         }
@@ -110,9 +107,11 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
             if (oldToken.equals(redisUserInfo)) {
                 SysUserInfo vo = sysUserInfoMapperPriv.findUserNameByToken(userName);
                 //重写生成token(刷新)
-                String newTokenStr = JwtUtil.sign(vo.getUserName(), vo.getUserPwd());
+                String newTokenStr = JwtUtil.sign(vo.getUserName(), vo.getUserPwd(), Boolean.valueOf(request.getParameter(
+                        "rememberMe")));
                 JwtToken jwtToken = new JwtToken(newTokenStr);
-                redisUtil.set(userName, newTokenStr);
+
+                //redisUtil.set(userName, newTokenStr);
                 SecurityUtils.getSubject().login(jwtToken);
                 response.setHeader("Authorization", newTokenStr);
                 return true;
@@ -125,17 +124,18 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
      * token有问题
      *
      * @param response
-     * @param code
-     * @param msg
+     * @param resultCodeEnum
      */
-    private void handler401(ServletResponse response, int code, String msg) {
+    private void handler401(ServletResponse response, ResultCodeEnum resultCodeEnum) {
         try {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setStatus(HttpStatus.OK.value());
             httpResponse.setContentType("application/json;charset=utf-8");
-            httpResponse.getWriter().write("{\"code\":" + code + ", \"msg\":\"" + msg + "\"}");
+            httpResponse.getWriter().write("{\"code\":" + resultCodeEnum.getCode() + ", \"msg\":\"" + resultCodeEnum.getMessage() + "\"}");
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+
+            e.printStackTrace();
+            throw new CMSException(ResultCodeEnum.USER_TOKEN_INCORRECT);
         }
     }
 

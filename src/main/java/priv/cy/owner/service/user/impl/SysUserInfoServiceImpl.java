@@ -10,8 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
+import priv.cy.owner.model.ResultCodeEnum;
 import priv.cy.owner.model.ResultInfo;
 import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
 import priv.cy.owner.service.user.SysUserInfoService;
@@ -52,17 +54,17 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
 
         String userPwd = String.valueOf(new SimpleHash(HASH_ALGORITH_NAME,
                 reqLoginUserInfo.getPassWord(), SALT, HASHI_TERATIONS));
-        String token = JwtUtil.sign(reqLoginUserInfo.getUserName(), userPwd);
+        String token = JwtUtil.sign(reqLoginUserInfo.getUserName(), userPwd, reqLoginUserInfo.getRememberMe());
 
         SysUserInfo loginUser = sysUserInfoMapperPriv.findUserNameByToken(reqLoginUserInfo.getUserName());
 
         JwtToken jwtToken = new JwtToken(token);
         logger.debug(loginUser.getUserName());
         if (!ObjectUtil.isNull(loginUser)
-                && !StrUtil.hasBlank(loginUser.getUserPwd())
-                && !StrUtil.hasBlank(loginUser.getPwdSalt())) {
+                && !StrUtil.hasBlank(loginUser.getUserName())
+                && !StrUtil.hasBlank(loginUser.getUserPwd())) {
 
-            redisUtil.set(loginUser.getUserName(), token, REFRESH_JWT_TOKEN_EXPIRE_TIME);
+            //redisUtil.set(loginUser.getUserName(), token, REFRESH_JWT_TOKEN_EXPIRE_TIME);
             return ResultInfo.ok().data("token", token).message("登录成功");
         } else {
             throw new RuntimeException("请刷新重试.");
@@ -82,5 +84,15 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
             pageInfo.setList(new ArrayList<>());
         }
         return pageInfo;
+    }
+
+    @Transactional
+    @Override
+    public ResultInfo createSysUser(SysUserInfo sysUserInfo) {
+        String userId = sysUserInfoMapperPriv.insertSysUser(sysUserInfo);
+        if (StrUtil.isNotEmpty(userId)) {
+            return ResultInfo.ok();
+        }
+        return ResultInfo.setResult(ResultCodeEnum.USER_CREATE_ERROR);
     }
 }

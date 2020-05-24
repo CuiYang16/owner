@@ -79,6 +79,20 @@ public class JwtUtil {
         }
     }
 
+    public static Boolean getRememberMe(String token) {
+
+        try {
+
+            DecodedJWT jwt = JWT.decode(token);
+
+            return Boolean.valueOf(jwt.getClaim("rememberMe").asString());
+
+        } catch (JWTDecodeException e) {
+
+            return null;
+        }
+    }
+
     /**
      * 生成签名,5min后过期
      *
@@ -86,7 +100,7 @@ public class JwtUtil {
      * @param secret   用户的密码
      * @return 加密的token
      */
-    public static String sign(String username, String secret) {
+    public static String sign(String username, String secret, Boolean rememberMe) {
 
         Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
 
@@ -94,6 +108,6 @@ public class JwtUtil {
 
         // 附带username信息
 
-        return JWT.create().withClaim("username", username).withClaim("password", secret).withExpiresAt(date).sign(algorithm);
+        return JWT.create().withClaim("username", username).withClaim("password", secret).withClaim("rememberMe", rememberMe).withExpiresAt(date).sign(algorithm);
     }
 }

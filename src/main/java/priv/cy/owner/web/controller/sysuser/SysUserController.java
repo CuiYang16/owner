@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 import priv.cy.owner.model.ResultInfo;
 import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
 import priv.cy.owner.service.role.SysUserRoleService;
@@ -69,7 +70,6 @@ public class SysUserController {
     /**
      * 权限不足
      *
-     * @param request
      * @return
      */
     @RequestMapping(value = "/unauth", method = RequestMethod.GET)
@@ -83,5 +83,13 @@ public class SysUserController {
         return ResultInfo.ok().data("pageInfo", sysUserInfoService.getAllUsers(currentPage
                 , pageSize));
     }
+
+    @RequiresRoles(value = "admin")
+    @RequestMapping(value = "/adduser", method = RequestMethod.POST)
+    public ResultInfo createSysUser(SysUserInfo sysUserInfo) {
+        ResultInfo resultInfo = sysUserInfoService.createSysUser(sysUserInfo);
+        return resultInfo;
+    }
+
 }
 

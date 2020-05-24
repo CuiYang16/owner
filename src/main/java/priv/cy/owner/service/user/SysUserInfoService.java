@@ -10,4 +10,6 @@ public interface SysUserInfoService {
     ResultInfo findUserNameByToken(ReqLoginUserInfo reqLoginUserInfo);
 
     PageInfo<SysUserInfo> getAllUsers(Integer currentPage, Integer pageSize);
+
+    ResultInfo createSysUser(SysUserInfo sysUserInfo);
 }

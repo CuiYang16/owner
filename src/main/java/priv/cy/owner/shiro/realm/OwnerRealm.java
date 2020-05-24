@@ -82,18 +82,18 @@ public class OwnerRealm extends AuthorizingRealm {
         }
 
         //缓存是否存在
-        if (redisUtil.hasKey(userName)) {
-            SimpleAuthenticationInfo authenticationInfo =
-                    new SimpleAuthenticationInfo(
-                            (Object) sysUserInfo.getUserName(),
-                            (Object) sysUserInfo.getUserPwd(),
-                            ByteSource.Util.bytes(sysUserInfo.getPwdSalt()),
-                            getName());
-            logger.debug(userName + "redis存在token");
-            return authenticationInfo;
-        }
-        throw new AuthenticationException("Token expired or incorrect.");
-
+        // if (redisUtil.hasKey(userName)) {
+        SimpleAuthenticationInfo authenticationInfo =
+                new SimpleAuthenticationInfo(
+                        (Object) sysUserInfo.getUserName(),
+                        (Object) sysUserInfo.getUserPwd(),
+                        ByteSource.Util.bytes(sysUserInfo.getPwdSalt()),
+                        getName());
+        logger.debug(userName + "redis存在token");
+        return authenticationInfo;
+        //}
+        //throw new AuthenticationException("Token expired or incorrect.");
+        //throw new CMSException(ResultCodeEnum.USER_TOKEN_EXPIRED);
     }
 
     /**
