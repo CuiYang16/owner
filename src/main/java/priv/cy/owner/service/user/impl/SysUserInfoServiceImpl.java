@@ -11,16 +11,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import priv.cy.owner.common.jwt.JwtProperties;
+import priv.cy.owner.common.jwt.JwtToken;
+import priv.cy.owner.common.jwt.JwtUtil;
+import priv.cy.owner.common.util.redis.RedisUtil;
+import priv.cy.owner.common.util.uuid.UUIDutil;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
-import priv.cy.owner.model.ResultCodeEnum;
 import priv.cy.owner.model.ResultInfo;
 import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
 import priv.cy.owner.service.user.SysUserInfoService;
-import priv.cy.owner.util.jwt.JwtProperties;
-import priv.cy.owner.util.jwt.JwtToken;
-import priv.cy.owner.util.jwt.JwtUtil;
-import priv.cy.owner.util.redis.RedisUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,10 +89,10 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
     @Transactional
     @Override
     public ResultInfo createSysUser(SysUserInfo sysUserInfo) {
-        String userId = sysUserInfoMapperPriv.insertSysUser(sysUserInfo);
-        if (StrUtil.isNotEmpty(userId)) {
-            return ResultInfo.ok();
-        }
-        return ResultInfo.setResult(ResultCodeEnum.USER_CREATE_ERROR);
+        sysUserInfo.setUserId(UUIDutil.getUUID());
+        logger.debug(sysUserInfo.toString());
+        sysUserInfoMapperPriv.insertSysUser(sysUserInfo);
+
+        return ResultInfo.ok();
     }
 }

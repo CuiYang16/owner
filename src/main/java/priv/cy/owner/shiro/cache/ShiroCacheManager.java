@@ -5,8 +5,8 @@ import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import priv.cy.owner.util.jwt.JwtProperties;
-import priv.cy.owner.util.redis.RedisUtil;
+import priv.cy.owner.common.jwt.JwtProperties;
+import priv.cy.owner.common.util.redis.RedisUtil;
 
 /**
  * @author ：cuiyang

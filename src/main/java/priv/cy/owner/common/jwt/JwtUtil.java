@@ -1,4 +1,4 @@
-package priv.cy.owner.util.jwt;
+package priv.cy.owner.common.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -14,7 +14,8 @@ import java.util.Date;
  * @date ：Created in 2019/12/30 20:44
  */
 public class JwtUtil {
-    private static final long EXPIRE_TIME = 50 * 60 * 1000;
+    // Token过期时间30分钟（用户登录过期时间是此时间的两倍，以token在reids缓存时间为准）
+    public static final long EXPIRE_TIME = 30 * 60 * 1000;
 
     /**
      * 校验token是否正确
@@ -91,6 +92,24 @@ public class JwtUtil {
 
             return null;
         }
+    }
+
+    /**
+     * 生成签名,5min后过期
+     *
+     * @param username 用户名
+     * @param secret   用户的密码
+     * @return 加密的token
+     */
+    public static String sign(String username, String secret) {
+
+        Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+
+        Algorithm algorithm = Algorithm.HMAC256(secret);
+
+        // 附带username信息
+
+        return JWT.create().withClaim("username", username).withClaim("password", secret).withExpiresAt(date).sign(algorithm);
     }
 
     /**

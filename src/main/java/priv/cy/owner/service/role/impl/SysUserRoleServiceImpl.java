@@ -2,12 +2,12 @@ package priv.cy.owner.service.role.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import priv.cy.owner.common.jwt.JwtUtil;
 import priv.cy.owner.entity.SysRoleInfo;
 import priv.cy.owner.mapper.role.SysRoleInfoPrivMapper;
 import priv.cy.owner.model.ResultInfo;
 import priv.cy.owner.service.role.SysUserRoleService;
 import priv.cy.owner.service.userrole.UserRoleService;
-import priv.cy.owner.util.jwt.JwtUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;

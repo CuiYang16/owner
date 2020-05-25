@@ -1,4 +1,4 @@
-package priv.cy.owner.util.date;
+package priv.cy.owner.common.util.date;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;

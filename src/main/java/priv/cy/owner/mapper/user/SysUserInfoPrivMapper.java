@@ -24,5 +24,5 @@ public interface SysUserInfoPrivMapper {
      *
      * @param sysUserInfo
      */
-    String insertSysUser(SysUserInfo sysUserInfo);
+    void insertSysUser(SysUserInfo sysUserInfo);
 }

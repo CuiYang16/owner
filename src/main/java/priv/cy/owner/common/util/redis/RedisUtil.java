@@ -1,4 +1,4 @@
-package priv.cy.owner.util.redis;
+package priv.cy.owner.common.util.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

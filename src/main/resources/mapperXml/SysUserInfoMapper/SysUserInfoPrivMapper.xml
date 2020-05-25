@@ -44,8 +44,7 @@
 
     </select>
 
-    <insert id="insertSysUser" parameterType="priv.cy.owner.entity.sysUserInfo.SysUserInfo" useGeneratedKeys="true"
-            keyColumn="user_id">
+    <insert id="insertSysUser" parameterType="priv.cy.owner.entity.sysUserInfo.SysUserInfo">
         <!--@mbg.generated-->
         insert into sys_user_info
         <trim prefix="(" suffix=")" suffixOverrides=",">

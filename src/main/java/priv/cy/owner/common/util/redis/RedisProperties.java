@@ -1,4 +1,4 @@
-package priv.cy.owner.util.redis;
+package priv.cy.owner.common.util.redis;
 
 /**
  * @author ：cuiyang
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class RedisProperties {
 
     private static final String PROPERTIES_FILE = "application.properties";
-    
+
     private Integer database;
     private String host;
     private Integer port;

@@ -1,4 +1,4 @@
-package priv.cy.owner.util.jwt;
+package priv.cy.owner.common.jwt;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

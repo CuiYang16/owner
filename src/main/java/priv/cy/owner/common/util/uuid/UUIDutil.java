@@ -1,4 +1,4 @@
-package priv.cy.owner.util.uuid;
+package priv.cy.owner.common.util.uuid;
 
 import java.util.UUID;
 

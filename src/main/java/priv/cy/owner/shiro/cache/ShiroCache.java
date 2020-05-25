@@ -3,9 +3,9 @@ package priv.cy.owner.shiro.cache;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.springframework.beans.factory.annotation.Autowired;
-import priv.cy.owner.util.jwt.JwtProperties;
-import priv.cy.owner.util.jwt.JwtUtil;
-import priv.cy.owner.util.redis.RedisUtil;
+import priv.cy.owner.common.jwt.JwtProperties;
+import priv.cy.owner.common.jwt.JwtUtil;
+import priv.cy.owner.common.util.redis.RedisUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
