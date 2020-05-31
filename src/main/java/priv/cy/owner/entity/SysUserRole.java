@@ -1,15 +1,16 @@
 package priv.cy.owner.entity;
 
-import java.io.Serializable;
 import lombok.Data;
+
+import java.io.Serializable;
 
 @Data
 public class SysUserRole implements Serializable {
-    private Integer id;
+    private String id;
 
-    private Integer userId;
+    private String userId;
 
-    private Integer roleId;
+    private String roleId;
 
     private static final long serialVersionUID = 1L;
 }

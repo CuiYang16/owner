@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class JWTFilter extends BasicHttpAuthenticationFilter {
 
-    public final static String X_ACCESS_TOKEN = "Authorization";
     //白名单
 
     private String anonymousStr = "sysuser/login,sysuser/info,sysuser/logout";
@@ -55,7 +54,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
     @Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        String token = httpServletRequest.getHeader(X_ACCESS_TOKEN);
+        String token = httpServletRequest.getHeader(CommonConstant.X_ACCESS_TOKEN);
 
         JwtToken jwtToken = new JwtToken(token);
         // 提交给realm进行登入，如果错误他会抛出异常并被捕获

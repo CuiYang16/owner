@@ -180,7 +180,10 @@ public class OwnerRealm extends AuthorizingRealm {
         if (loginUser.getIsDeleted() == 1) {
             throw new UnknownAccountException("账户状态异常，请联系管理员！");
         }
-
+        // 校验token是否超时失效 & 或者账号密码是否错误
+        if (!jwtTokenRefresh(token, username, loginUser.getUserPwd())) {
+            throw new AuthenticationException("Token失效，请重新登录!");
+        }
         return loginUser;
     }
 
@@ -208,13 +211,6 @@ public class OwnerRealm extends AuthorizingRealm {
                 redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME * 2 / 1000);
                 logger.info("——————————用户在线操作，更新token保证不掉线—————————jwtTokenRefresh——————— " + token);
             }
-            //update-begin--Author:scott  Date:20191005  for：解决每次请求，都重写redis中 token缓存问题
-//			else {
-//				// 设置超时时间
-//				redisUtil.set(CommonConstant.PREFIX_USER_TOKEN + token, cacheToken);
-//				redisUtil.expire(CommonConstant.PREFIX_USER_TOKEN + token, JwtUtil.EXPIRE_TIME / 1000);
-//			}
-            //update-end--Author:scott  Date:20191005   for：解决每次请求，都重写redis中 token缓存问题
             return true;
         }
         return false;

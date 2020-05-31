@@ -61,6 +61,7 @@ public class ShiroConfig {
 
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/sysuser/login", "anon");
+        filterChainDefinitionMap.put("/sysuser/randomImage/*", "anon");
         filterChainDefinitionMap.put("/**", "anon");
         filterChainDefinitionMap.put("/**.js", "anon");
         //管理员，需要角色权限 “admin”

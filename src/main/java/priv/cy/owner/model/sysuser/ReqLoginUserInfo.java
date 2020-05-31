@@ -21,4 +21,10 @@ public class ReqLoginUserInfo {
 
     //记住我
     private Boolean rememberMe;
+
+    //验证码
+    private String captcha;
+
+    //验证码key
+    private String checkKey;
 }

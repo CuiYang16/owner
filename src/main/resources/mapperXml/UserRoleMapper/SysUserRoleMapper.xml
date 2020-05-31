@@ -4,9 +4,9 @@
     <resultMap id="BaseResultMap" type="priv.cy.owner.entity.SysUserRole">
         <!--@mbg.generated-->
         <!--@Table sys_user_role-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="user_id" jdbcType="INTEGER" property="userId"/>
-        <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="role_id" jdbcType="VARCHAR" property="roleId"/>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->

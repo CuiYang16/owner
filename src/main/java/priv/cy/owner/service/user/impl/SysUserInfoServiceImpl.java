@@ -14,10 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import priv.cy.owner.common.jwt.JwtProperties;
 import priv.cy.owner.common.jwt.JwtToken;
 import priv.cy.owner.common.jwt.JwtUtil;
+import priv.cy.owner.common.util.md5.MD5Util;
 import priv.cy.owner.common.util.redis.RedisUtil;
 import priv.cy.owner.common.util.uuid.UUIDutil;
 import priv.cy.owner.entity.sysUserInfo.SysUserInfo;
 import priv.cy.owner.mapper.user.SysUserInfoPrivMapper;
+import priv.cy.owner.model.ResultCodeEnum;
 import priv.cy.owner.model.ResultInfo;
 import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
 import priv.cy.owner.service.user.SysUserInfoService;
@@ -60,17 +62,36 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
 
         JwtToken jwtToken = new JwtToken(token);
         logger.debug(loginUser.getUserName());
-        if (!ObjectUtil.isNull(loginUser)
-                && !StrUtil.hasBlank(loginUser.getUserName())
-                && !StrUtil.hasBlank(loginUser.getUserPwd())) {
+        String captcha = reqLoginUserInfo.getCaptcha();
+
+        String lowerCaseCaptcha = captcha.toLowerCase();
+        String realKey = MD5Util.MD5Encode(lowerCaseCaptcha + reqLoginUserInfo.getCheckKey(), "utf-8");
+        String checkCode = (String) redisUtil.get(realKey);
+
+        if (!ObjectUtil.isNull(loginUser)) {
+            if (StrUtil.hasBlank(loginUser.getUserName())) {
+                return ResultInfo.setResult(ResultCodeEnum.LOGINUSER_INFO_ERROR);
+            }
+            if (StrUtil.hasBlank(loginUser.getUserPwd())) {
+                return ResultInfo.setResult(ResultCodeEnum.LOGINUSER_INFO_ERROR);
+            }
+            if (StrUtil.hasBlank(loginUser.getUserName())) {
+                return ResultInfo.setResult(ResultCodeEnum.LOGINUSER_INFO_ERROR);
+            }
+            if (StrUtil.isEmpty(captcha)) {
+                return ResultInfo.setResult(ResultCodeEnum.RANDOM_IMAGE_ERROR);
+            }
+            if (StrUtil.isEmpty(lowerCaseCaptcha) || !lowerCaseCaptcha.equalsIgnoreCase(checkCode)) {
+                return ResultInfo.setResult(ResultCodeEnum.RANDOM_IMAGE_ERROR);
+            }
 
             //redisUtil.set(loginUser.getUserName(), token, REFRESH_JWT_TOKEN_EXPIRE_TIME);
             return ResultInfo.ok().data("token", token).message("登录成功");
         } else {
-            throw new RuntimeException("请刷新重试.");
+            return ResultInfo.setResult(ResultCodeEnum.USER_NEED_AUTHORITIES);
         }
-    }
 
+    }
 
     @Override
     public PageInfo<SysUserInfo> getAllUsers(Integer currentPage, Integer pageSize) {
@@ -90,6 +111,9 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
     @Override
     public ResultInfo createSysUser(SysUserInfo sysUserInfo) {
         sysUserInfo.setUserId(UUIDutil.getUUID());
+        sysUserInfo.setUserPwd(String.valueOf(new SimpleHash("MD5", sysUserInfo.getUserPwd(), ByteSource.Util.bytes("cy_salt"),
+                1024)));
+        sysUserInfo.setPwdSalt("cy_salt");
         logger.debug(sysUserInfo.toString());
         sysUserInfoMapperPriv.insertSysUser(sysUserInfo);
 

@@ -3,6 +3,7 @@ package priv.cy.owner.service.role.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priv.cy.owner.common.jwt.JwtUtil;
+import priv.cy.owner.common.util.redis.RedisUtil;
 import priv.cy.owner.entity.SysRoleInfo;
 import priv.cy.owner.mapper.role.SysRoleInfoPrivMapper;
 import priv.cy.owner.model.ResultInfo;
@@ -30,6 +31,9 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
     @Autowired
     private SysUserRoleService sysUserRoleService;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Override
     public ResultInfo getRolesByRoleIds(HttpServletRequest request) {
 
@@ -51,6 +55,7 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
 
     @Override
     public List<SysRoleInfo> getRolesByUserName(String userName) {
+        
 
         List<SysRoleInfo> roles =
                 sysRoleInfoPrivMapper.selectRoleByRoleId(userRoleService.getRoleByUserName(userName));
