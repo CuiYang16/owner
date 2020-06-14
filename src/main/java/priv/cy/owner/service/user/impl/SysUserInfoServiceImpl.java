@@ -25,6 +25,7 @@ import priv.cy.owner.model.sysuser.ReqLoginUserInfo;
 import priv.cy.owner.service.user.SysUserInfoService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -114,9 +115,18 @@ public class SysUserInfoServiceImpl implements SysUserInfoService {
         sysUserInfo.setUserPwd(String.valueOf(new SimpleHash("MD5", sysUserInfo.getUserPwd(), ByteSource.Util.bytes("cy_salt"),
                 1024)));
         sysUserInfo.setPwdSalt("cy_salt");
+        sysUserInfo.setCreateTime(new Date());
         logger.debug(sysUserInfo.toString());
         sysUserInfoMapperPriv.insertSysUser(sysUserInfo);
 
+        return ResultInfo.ok();
+    }
+
+    @Transactional
+    @Override
+    public ResultInfo deleteSysUser(String userId) {
+        logger.debug("删除用户id" + userId);
+        sysUserInfoMapperPriv.deleteUser(userId);
         return ResultInfo.ok();
     }
 }

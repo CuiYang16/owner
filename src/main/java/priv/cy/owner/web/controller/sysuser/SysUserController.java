@@ -128,7 +128,7 @@ public class SysUserController {
             return ResultInfo.setResult(ResultCodeEnum.USER_TOKEN_INCORRECT);
         }
     }
-    
+
 
     /**
      * 权限不足
@@ -156,5 +156,11 @@ public class SysUserController {
         return resultInfo;
     }
 
+    @RequiresRoles(value = "admin")
+    @RequestMapping(value = "/deluser", method = RequestMethod.DELETE)
+    public ResultInfo deleteSysUser(String userId) {
+        ResultInfo resultInfo = sysUserInfoService.deleteSysUser(userId);
+        return resultInfo;
+    }
 }
 

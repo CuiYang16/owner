@@ -12,4 +12,6 @@ public interface SysUserInfoService {
     PageInfo<SysUserInfo> getAllUsers(Integer currentPage, Integer pageSize);
 
     ResultInfo createSysUser(SysUserInfo sysUserInfo);
+
+    ResultInfo deleteSysUser(String userId);
 }

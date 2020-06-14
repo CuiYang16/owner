@@ -40,7 +40,7 @@
     <select id="selectAllUser" parameterType="string" resultMap="BaseResultMap">
         select
         <include refid="All_User"/>
-        from sys_user_info order by create_time,create_time desc
+        from sys_user_info order by create_time desc
 
     </select>
 
@@ -130,4 +130,10 @@
             </if>
         </trim>
     </insert>
+
+    <delete id="deleteUser" parameterType="string">
+        delete
+        from sys_user_info
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </delete>
 </mapper>

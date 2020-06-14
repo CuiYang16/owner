@@ -25,4 +25,11 @@ public interface SysUserInfoPrivMapper {
      * @param sysUserInfo
      */
     void insertSysUser(SysUserInfo sysUserInfo);
+
+    /**
+     * 根据id删除
+     *
+     * @param userId
+     */
+    void deleteUser(String userId);
 }
